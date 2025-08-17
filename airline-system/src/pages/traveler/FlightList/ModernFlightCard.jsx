@@ -121,7 +121,7 @@ const ModernFlightCard = ({
             
             {/* Airline Details */}
             <div>
-              <h3 className="font-semibold text-gray-900 text-lg group-hover:text-blue-700 transition-colors">
+              <h3 className="font-semibold text-gray-900 text-lg group-hover:text-primary transition-colors">
                 {flight.airlineName}
               </h3>
               <div className="flex items-center gap-2 text-sm text-gray-500">
@@ -149,7 +149,7 @@ const ModernFlightCard = ({
               variant="ghost"
               size="sm"
               onClick={() => onBookmark?.(flight)}
-              className="ml-2 p-1 hover:bg-blue-50"
+              className="ml-2 p-1 "
             >
               {isBookmarked ? (
                 <BookmarkCheck className="h-4 w-4 text-blue-600" />
@@ -224,16 +224,18 @@ const ModernFlightCard = ({
           <div className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-blue-50/30 rounded-lg border border-gray-100 sm:flex-col sm:items-stretch sm:gap-4 md:flex-row md:items-center  mobile-price-section">
             {/* Price */}
             <div>
-              <div className="text-2xl font-bold text-blue-700">
+              <div className="text-2xl font-bold text-primary">
                 {formatPrice(flight.price)}
               </div>
               <div className="text-xs text-gray-500">per person</div>
-              <button 
-                className="text-xs text-blue-600 hover:text-blue-700 underline mt-1"
+              <Button
+              size={"small"}
+              variant={"ghost"}
+                className="mt-1"
                 onClick={() => setIsExpanded(!isExpanded)}
               >
                 Fare breakdown
-              </button>
+              </Button>
             </div>
 
             {/* Action Buttons */}
@@ -244,7 +246,7 @@ const ModernFlightCard = ({
                   setIsExpanded(!isExpanded)
                   onViewDetails?.(flight)
                 }}
-                className="hover:bg-blue-50 hover:border-blue-200 transition-colors"
+                className=""
               >
                 View Details
                 {isExpanded ? (
@@ -255,7 +257,7 @@ const ModernFlightCard = ({
               </Button>
               <Button
                 onClick={() => onBook?.(flight)}
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold px-6 shadow-md hover:shadow-lg transition-all duration-200"
+                className=""
               >
                 Book Now
                 <ArrowRight className="ml-2 h-4 w-4" />

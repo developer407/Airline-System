@@ -199,7 +199,13 @@ const SearchResults = () => {
 
   const handleBookFlight = (flight) => {
     console.log("Book flight:", flight.flightNumber)
-    // In a real app, navigate to booking page
+    // Navigate to booking page with flight data
+    navigate("/booking-review", { 
+      state: { 
+        flight,
+        searchData 
+      } 
+    })
   }
 
   const clearAllFilters = () => {

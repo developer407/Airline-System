@@ -64,17 +64,7 @@ const SearchSummaryBar = ({ searchData, onModifySearch, className }) => {
             </div>
           </div>
 
-          {/* Modify Search Button */}
-          <div className="flex items-center gap-3">
-            <Button
-              variant="outline"
-              onClick={() => setShowModifyForm(!showModifyForm)}
-              className="flex items-center gap-2 hover:bg-blue-50 hover:border-blue-200 transition-colors"
-            >
-              <Edit3 className="h-4 w-4" />
-              Modify Search
-            </Button>
-          </div>
+         
         </div>
 
         {/* Expandable Search Form - could integrate FlightSearchBar here if needed */}
