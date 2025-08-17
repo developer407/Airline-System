@@ -17,8 +17,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { stops } from "../data/stops";
 
 const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
   const [expandedSections, setExpandedSections] = React.useState({
@@ -194,26 +196,28 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
       <CardContent className="p-0">
         {/* Stops Filter */}
         <FilterSection title="Stops" id="stops" icon={Plane}>
-          <div className="space-y-3">
-            {stops.map((option) => (
-              <label
-                key={option.value}
-                className="flex items-center gap-2 cursor-pointer group"
-              >
-                <input
-                  type="radio"
-                  name="stops"
-                  value={option.value}
-                  checked={filters.stops === option.value}
-                  onChange={(e) => updateFilter("stops", e.target.value)}
-                  className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
-                />
-                <span className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
+          <RadioGroup
+            value={filters.stops}
+            onValueChange={(value) => updateFilter("stops", value)}
+            className="space-y-3"
+          >
+            {[
+              { value: "any", label: "Any number of stops" },
+              { value: "0", label: "Non-stop" },
+              { value: "1", label: "1 stop" },
+              { value: "2", label: "2+ stops" }
+            ].map((option) => (
+              <div key={option.value} className="flex items-center space-x-2">
+                <RadioGroupItem value={option.value} id={`stops-${option.value}`} />
+                <Label
+                  htmlFor={`stops-${option.value}`}
+                  className="text-sm text-gray-700 cursor-pointer hover:text-gray-900 transition-colors"
+                >
                   {option.label}
-                </span>
-              </label>
+                </Label>
+              </div>
             ))}
-          </div>
+          </RadioGroup>
         </FilterSection>
 
         {/* Price Range Filter */}
@@ -230,15 +234,15 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
         <FilterSection title="Airlines" id="airlines" icon={Users}>
           <div className="space-y-2 max-h-48 overflow-y-auto">
             {airlines.map((airline) => (
-              <label
+              <div
                 key={airline.code}
-                className="flex items-center gap-3 cursor-pointer group hover:bg-gray-50 p-2 rounded-md transition-colors"
+                className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-50 transition-colors"
               >
-                <input
-                  type="checkbox"
+                <Checkbox
+                  id={`airline-${airline.code}`}
                   checked={filters.airlines.includes(airline.code)}
-                  onChange={(e) => {
-                    if (e.target.checked) {
+                  onCheckedChange={(checked) => {
+                    if (checked) {
                       updateFilter("airlines", [
                         ...filters.airlines,
                         airline.code,
@@ -250,76 +254,74 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
                       );
                     }
                   }}
-                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 />
-                <div className="flex items-center gap-2 flex-1">
+                <Label
+                  htmlFor={`airline-${airline.code}`}
+                  className="flex items-center gap-2 flex-1 cursor-pointer"
+                >
                   <span className="text-lg">
                     {getAirlineLogo(airline.code)}
                   </span>
-                  <span className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
+                  <span className="text-sm text-gray-700 hover:text-gray-900 transition-colors">
                     {airline.name}
                   </span>
                   <span className="text-xs text-gray-500 ml-auto">
                     {/* You could add flight counts here */}
                   </span>
-                </div>
-              </label>
+                </Label>
+              </div>
             ))}
           </div>
         </FilterSection>
 
         {/* Departure Time Filter */}
         <FilterSection title="Departure Time" id="departure" icon={Clock}>
-          <div className="space-y-2">
+          <RadioGroup
+            value={filters.departureTimeRange}
+            onValueChange={(value) => updateFilter("departureTimeRange", value)}
+            className="space-y-2"
+          >
             {timeRanges.map((range) => (
-              <label
+              <div
                 key={range.value}
-                className="flex items-center gap-3 cursor-pointer group hover:bg-gray-50 p-2 rounded-md transition-colors"
+                className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-50 transition-colors"
               >
-                <input
-                  type="radio"
-                  name="departureTime"
-                  value={range.value}
-                  checked={filters.departureTimeRange === range.value}
-                  onChange={(e) =>
-                    updateFilter("departureTimeRange", e.target.value)
-                  }
-                  className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
-                />
-                <span className="text-base">{range.icon}</span>
-                <span className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
-                  {range.label}
-                </span>
-              </label>
+                <RadioGroupItem value={range.value} id={`departure-${range.value}`} />
+                <Label
+                  htmlFor={`departure-${range.value}`}
+                  className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-gray-900 transition-colors"
+                >
+                  <span className="text-base">{range.icon}</span>
+                  <span>{range.label}</span>
+                </Label>
+              </div>
             ))}
-          </div>
+          </RadioGroup>
         </FilterSection>
 
         {/* Arrival Time Filter */}
         <FilterSection title="Arrival Time" id="arrival" icon={Clock}>
-          <div className="space-y-2">
+          <RadioGroup
+            value={filters.arrivalTimeRange}
+            onValueChange={(value) => updateFilter("arrivalTimeRange", value)}
+            className="space-y-2"
+          >
             {timeRanges.map((range) => (
-              <label
+              <div
                 key={range.value}
-                className="flex items-center gap-3 cursor-pointer group hover:bg-gray-50 p-2 rounded-md transition-colors"
+                className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-50 transition-colors"
               >
-                <input
-                  type="radio"
-                  name="arrivalTime"
-                  value={range.value}
-                  checked={filters.arrivalTimeRange === range.value}
-                  onChange={(e) =>
-                    updateFilter("arrivalTimeRange", e.target.value)
-                  }
-                  className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
-                />
-                <span className="text-base">{range.icon}</span>
-                <span className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
-                  {range.label}
-                </span>
-              </label>
+                <RadioGroupItem value={range.value} id={`arrival-${range.value}`} />
+                <Label
+                  htmlFor={`arrival-${range.value}`}
+                  className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-gray-900 transition-colors"
+                >
+                  <span className="text-base">{range.icon}</span>
+                  <span>{range.label}</span>
+                </Label>
+              </div>
             ))}
-          </div>
+          </RadioGroup>
         </FilterSection>
 
         {/* Duration Filter */}
@@ -351,56 +353,64 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
         <FilterSection title="Other Options" id="other" icon={Star}>
           <div className="space-y-4">
             {/* Refundable Toggle */}
-            <label className="flex items-center justify-between cursor-pointer group">
+            <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Shield className="h-4 w-4 text-green-600" />
-                <span className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
+                <Label
+                  htmlFor="refundable-filter"
+                  className="text-sm text-gray-700 cursor-pointer hover:text-gray-900 transition-colors"
+                >
                   Refundable Only
-                </span>
+                </Label>
               </div>
-              <input
-                type="checkbox"
+              <Checkbox
+                id="refundable-filter"
                 checked={filters.refundable}
-                onChange={(e) => updateFilter("refundable", e.target.checked)}
-                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                onCheckedChange={(checked) => updateFilter("refundable", checked)}
               />
-            </label>
+            </div>
 
             {/* Alliance Filter */}
             <div>
               <Label className="text-sm font-medium text-gray-700 mb-2 block">
                 Alliance
               </Label>
-              <select
+              <Select
                 value={filters.alliance}
-                onChange={(e) => updateFilter("alliance", e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                onValueChange={(value) => updateFilter("alliance", value)}
               >
-                {alliances.map((alliance) => (
-                  <option key={alliance.value} value={alliance.value}>
-                    {alliance.label}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select alliance" />
+                </SelectTrigger>
+                <SelectContent>
+                  {alliances.map((alliance) => (
+                    <SelectItem key={alliance.value} value={alliance.value}>
+                      {alliance.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             {/* Baggage Included Toggle */}
-            <label className="flex items-center justify-between cursor-pointer group">
+            <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Luggage className="h-4 w-4 text-blue-600" />
-                <span className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
+                <Label
+                  htmlFor="baggage-filter"
+                  className="text-sm text-gray-700 cursor-pointer hover:text-gray-900 transition-colors"
+                >
                   Baggage Included
-                </span>
+                </Label>
               </div>
-              <input
-                type="checkbox"
+              <Checkbox
+                id="baggage-filter"
                 checked={filters.baggageIncluded}
-                onChange={(e) =>
-                  updateFilter("baggageIncluded", e.target.checked)
+                onCheckedChange={(checked) =>
+                  updateFilter("baggageIncluded", checked)
                 }
-                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
-            </label>
+            </div>
           </div>
         </FilterSection>
       </CardContent>

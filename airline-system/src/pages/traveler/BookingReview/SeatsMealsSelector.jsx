@@ -8,12 +8,15 @@ import {
   Info,
   Check,
   X,
-  Grid3X3
+  Grid3X3,
+  Armchair
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { cn } from "@/lib/utils"
-import { Armchair } from "lucide-react"
 
 const SeatsMealsSelector = ({ 
   flight, 
@@ -395,58 +398,56 @@ const SeatsMealsSelector = ({
                   </p>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {mealOptions.map((meal) => {
-                    const isSelected = selectedMeals[traveler.id] === meal.id
-                    
-                    return (
-                      <div
-                        key={meal.id}
-                        className={cn(
-                          "border-2 rounded-lg p-3 cursor-pointer transition-all",
-                          isSelected 
-                            ? "border-blue-500 bg-blue-50" 
-                            : "border-gray-200 hover:border-blue-300 hover:bg-blue-25"
-                        )}
-                        onClick={() => updateMealForTraveler(traveler.id, meal.id)}
-                      >
-                        <div className="flex items-start justify-between">
-                          <div className="flex items-start gap-2">
-                            <span className="text-lg">{meal.icon}</span>
-                            <div>
-                              <h5 className="font-medium text-gray-900 text-sm">{meal.name}</h5>
-                              <p className="text-xs text-gray-600 mt-1">{meal.description}</p>
-                              {meal.dietary && (
-                                <span className="inline-block mt-1 px-2 py-0.5 bg-green-100 text-green-800 text-xs rounded-full">
-                                  {meal.dietary}
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                          
-                          <div className="text-right">
-                            {meal.price > 0 ? (
-                              <span className="text-sm font-medium text-gray-900">
-                                ₹{meal.price}
-                              </span>
-                            ) : (
-                              <span className="text-xs text-green-600 font-medium">Free</span>
-                            )}
-                            
-                            <div className={cn(
-                              "w-4 h-4 rounded-full border-2 mt-1 ml-auto",
-                              isSelected 
-                                ? "border-blue-500 bg-blue-500" 
-                                : "border-gray-300"
-                            )}>
-                              {isSelected && <Check className="w-2 h-2 text-white" />}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
+                                 <RadioGroup
+                   value={selectedMeals[traveler.id] || "none"}
+                   onValueChange={(value) => updateMealForTraveler(traveler.id, value)}
+                   className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"
+                 >
+                   {mealOptions.map((meal) => (
+                     <div key={meal.id} className="relative">
+                       <Label
+                         htmlFor={`meal-${traveler.id}-${meal.id}`}
+                         className={cn(
+                           "border-2 rounded-lg p-3 cursor-pointer transition-all block",
+                           selectedMeals[traveler.id] === meal.id
+                             ? "border-blue-500 bg-blue-50" 
+                             : "border-gray-200 hover:border-blue-300 hover:bg-blue-25"
+                         )}
+                       >
+                         <div className="flex items-start justify-between">
+                           <div className="flex items-start gap-2">
+                             <span className="text-lg">{meal.icon}</span>
+                             <div>
+                               <h5 className="font-medium text-gray-900 text-sm">{meal.name}</h5>
+                               <p className="text-xs text-gray-600 mt-1">{meal.description}</p>
+                               {meal.dietary && (
+                                 <span className="inline-block mt-1 px-2 py-0.5 bg-green-100 text-green-800 text-xs rounded-full">
+                                   {meal.dietary}
+                                 </span>
+                               )}
+                             </div>
+                           </div>
+                           
+                           <div className="text-right">
+                             {meal.price > 0 ? (
+                               <span className="text-sm font-medium text-gray-900">
+                                 ₹{meal.price}
+                               </span>
+                             ) : (
+                               <span className="text-xs text-green-600 font-medium">Free</span>
+                             )}
+                             
+                             <RadioGroupItem 
+                               value={meal.id} 
+                               id={`meal-${traveler.id}-${meal.id}`}
+                               className="mt-2 ml-auto"
+                             />
+                           </div>
+                         </div>
+                       </Label>
+                     </div>
+                   ))}
+                 </RadioGroup>
               </div>
             ))}
           </div>
@@ -459,26 +460,25 @@ const SeatsMealsSelector = ({
             Special Assistance
           </h4>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {specialAssistance.map((assistance) => (
-              <div key={assistance.id} className="flex items-start gap-3 p-3 border border-gray-200 rounded-lg">
-                <input
-                  type="checkbox"
-                  id={assistance.id}
-                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mt-0.5"
-                />
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <assistance.icon className="h-4 w-4 text-blue-600" />
-                    <label htmlFor={assistance.id} className="font-medium text-gray-900 text-sm cursor-pointer">
-                      {assistance.name}
-                    </label>
-                  </div>
-                  <p className="text-xs text-gray-600 mt-1">{assistance.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+             {specialAssistance.map((assistance) => (
+               <div key={assistance.id} className="flex items-start gap-3 p-3 border border-gray-200 rounded-lg">
+                 <Checkbox
+                   id={assistance.id}
+                   className="mt-0.5"
+                 />
+                 <div className="flex-1">
+                   <div className="flex items-center gap-2">
+                     <assistance.icon className="h-4 w-4 text-blue-600" />
+                     <Label htmlFor={assistance.id} className="font-medium text-gray-900 text-sm cursor-pointer">
+                       {assistance.name}
+                     </Label>
+                   </div>
+                   <p className="text-xs text-gray-600 mt-1">{assistance.description}</p>
+                 </div>
+               </div>
+             ))}
+           </div>
 
           <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
             <div className="flex items-start gap-2">

@@ -18,6 +18,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Checkbox } from "@/components/ui/checkbox"
 import { cn } from "@/lib/utils"
 
 const TravellerDetailsForm = ({ 
@@ -159,20 +161,22 @@ const TravellerDetailsForm = ({
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
               <Label htmlFor={`title-${index}`}>Title *</Label>
-              <select
-                id={`title-${index}`}
+              <Select
                 value={traveler.title}
-                onChange={(e) => updateTraveler(index, 'title', e.target.value)}
-                className={cn(
-                  "w-full mt-1 p-2 border rounded-md text-sm",
-                  validationErrors[`traveler_${index}_title`] && "border-red-300 bg-red-50"
-                )}
+                onValueChange={(value) => updateTraveler(index, 'title', value)}
               >
-                <option value="">Select</option>
-                {titles.map(title => (
-                  <option key={title} value={title}>{title}</option>
-                ))}
-              </select>
+                <SelectTrigger className={cn(
+                  "w-full mt-1",
+                  validationErrors[`traveler_${index}_title`] && "border-red-300 bg-red-50"
+                )}>
+                  <SelectValue placeholder="Select title" />
+                </SelectTrigger>
+                <SelectContent>
+                  {titles.map(title => (
+                    <SelectItem key={title} value={title}>{title}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             
             <div>
@@ -213,20 +217,22 @@ const TravellerDetailsForm = ({
             
             <div>
               <Label htmlFor={`gender-${index}`}>Gender *</Label>
-              <select
-                id={`gender-${index}`}
+              <Select
                 value={traveler.gender}
-                onChange={(e) => updateTraveler(index, 'gender', e.target.value)}
-                className={cn(
-                  "w-full mt-1 p-2 border rounded-md text-sm",
-                  validationErrors[`traveler_${index}_gender`] && "border-red-300 bg-red-50"
-                )}
+                onValueChange={(value) => updateTraveler(index, 'gender', value)}
               >
-                <option value="">Select</option>
-                {genders.map(gender => (
-                  <option key={gender.value} value={gender.value}>{gender.label}</option>
-                ))}
-              </select>
+                <SelectTrigger className={cn(
+                  "w-full mt-1",
+                  validationErrors[`traveler_${index}_gender`] && "border-red-300 bg-red-50"
+                )}>
+                  <SelectValue placeholder="Select gender" />
+                </SelectTrigger>
+                <SelectContent>
+                  {genders.map(gender => (
+                    <SelectItem key={gender.value} value={gender.value}>{gender.label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               {validationErrors[`traveler_${index}_gender`] && (
                 <p className="text-red-600 text-xs mt-1">
                   {validationErrors[`traveler_${index}_gender`]}
@@ -263,16 +269,19 @@ const TravellerDetailsForm = ({
                 <Globe className="h-4 w-4" />
                 Nationality *
               </Label>
-              <select
-                id={`nationality-${index}`}
+              <Select
                 value={traveler.nationality}
-                onChange={(e) => updateTraveler(index, 'nationality', e.target.value)}
-                className="w-full mt-1 p-2 border rounded-md text-sm"
+                onValueChange={(value) => updateTraveler(index, 'nationality', value)}
               >
-                {nationalities.map(country => (
-                  <option key={country.value} value={country.value}>{country.label}</option>
-                ))}
-              </select>
+                <SelectTrigger className="w-full mt-1">
+                  <SelectValue placeholder="Select nationality" />
+                </SelectTrigger>
+                <SelectContent>
+                  {nationalities.map(country => (
+                    <SelectItem key={country.value} value={country.value}>{country.label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             
             <div>
@@ -395,15 +404,19 @@ const TravellerDetailsForm = ({
                   Mobile Number *
                 </Label>
                 <div className="flex gap-2 mt-1">
-                  <select
+                  <Select
                     value={contactInfo.countryCode}
-                    onChange={(e) => updateContactInfo('countryCode', e.target.value)}
-                    className="w-32 p-2 border rounded-md text-sm"
+                    onValueChange={(value) => updateContactInfo('countryCode', value)}
                   >
-                    {countryCodes.map(code => (
-                      <option key={code.value} value={code.value}>{code.label}</option>
-                    ))}
-                  </select>
+                    <SelectTrigger className="w-36">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {countryCodes.map(code => (
+                        <SelectItem key={code.value} value={code.value}>{code.label}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <Input
                     id="mobile"
                     value={contactInfo.mobile}
@@ -471,12 +484,10 @@ const TravellerDetailsForm = ({
         {/* Save Profile Option */}
         <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
           <div className="flex items-center gap-3">
-            <input
-              type="checkbox"
+            <Checkbox
               id="saveProfile"
               checked={showSaveProfile}
-              onChange={(e) => setShowSaveProfile(e.target.checked)}
-              className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              onCheckedChange={setShowSaveProfile}
             />
             <div>
               <Label htmlFor="saveProfile" className="font-medium text-gray-900 cursor-pointer">

@@ -14,6 +14,8 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
 
 const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
@@ -116,13 +118,12 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
   const AddOnCard = ({ addOn, isSelected, onToggle }) => (
     <div 
       className={cn(
-        "relative border-2 rounded-lg p-4 cursor-pointer transition-all duration-200",
+        "relative border-2 rounded-lg p-4 transition-all duration-200",
         isSelected 
           ? "border-blue-500 bg-blue-50 shadow-md" 
           : "border-gray-200 hover:border-blue-300 hover:shadow-sm",
         addOn.luxury && "bg-gradient-to-br from-amber-50 to-orange-50"
       )}
-      onClick={onToggle}
     >
       {/* Popular Badge */}
       {addOn.popular && (
@@ -143,22 +144,20 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
         {/* Header */}
         <div className="flex items-start justify-between">
           <div className="flex items-start gap-3">
-            <div className={cn(
-              "w-4 h-4 rounded-full border-2 mt-1",
-              isSelected 
-                ? "border-blue-500 bg-blue-500" 
-                : "border-gray-300"
-            )}>
-              {isSelected && <Check className="w-3 h-3 text-white" />}
-            </div>
+            <Checkbox
+              id={`addon-${addOn.id}`}
+              checked={isSelected}
+              onCheckedChange={onToggle}
+              className="mt-1"
+            />
             
-            <div className="flex-1">
+            <Label htmlFor={`addon-${addOn.id}`} className="flex-1 cursor-pointer">
               <div className="flex items-center gap-2">
                 <addOn.icon className={cn("w-5 h-5", addOn.color)} />
                 <h4 className="font-semibold text-gray-900">{addOn.name}</h4>
               </div>
               <p className="text-sm text-gray-600 mt-1">{addOn.description}</p>
-            </div>
+            </Label>
           </div>
           
           <div className="text-right">
@@ -234,26 +233,23 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
             
             <div 
               className={cn(
-                "border-2 rounded-lg p-4 cursor-pointer transition-all duration-200 bg-gradient-to-r from-red-50 to-pink-50",
+                "border-2 rounded-lg p-4 transition-all duration-200 bg-gradient-to-r from-red-50 to-pink-50",
                 selectedAddOns.lockPrice 
                   ? "border-red-500 bg-red-50 shadow-md" 
                   : "border-red-200 hover:border-red-300 hover:shadow-sm"
               )}
-              onClick={() => updateAddOn('lockPrice', !selectedAddOns.lockPrice)}
             >
               <div className="space-y-3">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-3">
-                    <div className={cn(
-                      "w-4 h-4 rounded-full border-2 mt-1",
-                      selectedAddOns.lockPrice 
-                        ? "border-red-500 bg-red-500" 
-                        : "border-gray-300"
-                    )}>
-                      {selectedAddOns.lockPrice && <Check className="w-3 h-3 text-white" />}
-                    </div>
+                    <Checkbox
+                      id="lockPrice"
+                      checked={selectedAddOns.lockPrice}
+                      onCheckedChange={(checked) => updateAddOn('lockPrice', checked)}
+                      className="mt-1"
+                    />
                     
-                    <div className="flex-1">
+                    <Label htmlFor="lockPrice" className="flex-1 cursor-pointer">
                       <div className="flex items-center gap-2">
                         <lockPriceOption.icon className={cn("w-5 h-5", lockPriceOption.color)} />
                         <h4 className="font-semibold text-gray-900">{lockPriceOption.name}</h4>
@@ -270,7 +266,7 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
                         </Button>
                       </div>
                       <p className="text-sm text-gray-600 mt-1">{lockPriceOption.description}</p>
-                    </div>
+                    </Label>
                   </div>
                   
                   <div className="text-right">
