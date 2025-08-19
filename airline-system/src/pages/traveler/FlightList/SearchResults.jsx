@@ -199,8 +199,92 @@ const SearchResults = () => {
 
   const handleBookFlight = (flight) => {
     console.log("Book flight:", flight.flightNumber)
-    // Navigate to booking page with flight data
-    navigate("/booking-review", { 
+    
+    // Generate required booking parameters
+    const generateItineraryId = () => {
+      const chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
+      let result = ''
+      for (let i = 0; i < 40; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length))
+      }
+      return result
+    }
+
+    const generateCorrelationId = () => {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0
+        const v = c === 'x' ? r : (r & 0x3 | 0x8)
+        return v.toString(16)
+      })
+    }
+
+    const generateRequestKey = () => {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+      let result = 'RKEY:'
+      for (let i = 0; i < 36; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length))
+        if (i === 7 || i === 12 || i === 17 || i === 22) result += '-'
+      }
+      return result + ':' + Math.floor(Math.random() * 99) + '_' + Math.floor(Math.random() * 9)
+    }
+
+    // Create encoded flight data similar to MakeMyTrip's xflt parameter
+    const createEncodedFlightData = () => {
+      // For now, assume all passengers are adults unless specified otherwise
+      const adults = searchData.passengers || 1
+      const children = 0
+      const infants = 0
+      
+      const flightData = {
+        c: searchData.cabinClass?.charAt(0).toUpperCase() || "E", // E for Economy
+        p: `A-${adults}_C-${children}_I-${infants}`,
+        t: "", // Trip type indicator
+        s: `${searchData.from}-${searchData.to}-${new Date(searchData.departureDate).toISOString().split('T')[0].replace(/-/g, '')}`,
+        ItineraryId: `${searchData.from}-${searchData.to}-${new Date(searchData.departureDate).toLocaleDateString('en-GB')}`,
+        TripType: searchData.returnDate ? "R" : "O", // R for Round trip, O for One-way
+        PaxType: `A-${adults}_C-${children}_I-${infants}`,
+        Intl: false,
+        CabinClass: searchData.cabinClass?.charAt(0).toUpperCase() || "E",
+        Ccde: "in",
+        Pft: "",
+        Pafs: "",
+        ForwardFlowRequired: true,
+        CmpId: ""
+      }
+      // Base64 encode the flight data (simplified version)
+      return btoa(JSON.stringify(flightData))
+    }
+
+    // Create URL parameters
+    const adults = searchData.passengers || 1
+    const children = 0
+    const infants = 0
+    
+    const params = new URLSearchParams({
+      itineraryId: generateItineraryId(),
+      cur: 'INR',
+      ccde: 'IN',
+      crId: generateCorrelationId(),
+      rKey: generateRequestKey(),
+      userCurrency: 'INR',
+      xflt: createEncodedFlightData(),
+      from: searchData.from,
+      to: searchData.to,
+      departureDate: searchData.departureDate.toISOString().split('T')[0],
+      passengers: searchData.passengers?.toString() || '1',
+      cabinClass: searchData.cabinClass || 'economy',
+      adults: adults.toString(),
+      children: children.toString(),
+      infants: infants.toString()
+    })
+
+    // Add return date if it exists
+    if (searchData.returnDate) {
+      params.append('returnDate', searchData.returnDate.toISOString().split('T')[0])
+    }
+
+    // Navigate to booking page with flight data and URL parameters
+    navigate(`/booking-review?${params.toString()}`, { 
       state: { 
         flight,
         searchData 

@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button"
 import FlightSummarySection from "./FlightSummarySection"
 import FareUpgradeBox from "./FareUpgradeBox"
 import TravelInsurance from "./TravelInsurance"
-import TravellerDetailsForm from "./TravellerDetailsForm"
+import TravellerDetailsForm from "./TravellerDetails/TravellerDetailsForm"
 import SeatsMealsSelector from "./SeatsMealsSelector"
 import AddOnsSection from "./AddOnsSection"
 import PriceSummaryBox from "./PriceSummaryBox"
@@ -70,14 +70,27 @@ const BookingReview = () => {
   const [isLoading, setIsLoading] = React.useState(false)
   const [validationErrors, setValidationErrors] = React.useState({})
 
-  // Get search data
-  const searchData = {
+  // Get search data from URL parameters or location state
+  const searchData = location.state?.searchData || {
     from: searchParams.get("from") || "GZB",
     to: searchParams.get("to") || "BLR",
     departureDate: searchParams.get("departureDate") ? new Date(searchParams.get("departureDate")) : new Date(),
     returnDate: searchParams.get("returnDate") ? new Date(searchParams.get("returnDate")) : null,
     passengers: parseInt(searchParams.get("passengers") || "1"),
-    cabinClass: searchParams.get("cabinClass") || "economy"
+    cabinClass: searchParams.get("cabinClass") || "economy",
+    adults: parseInt(searchParams.get("adults") || "1"),
+    children: parseInt(searchParams.get("children") || "0"),
+    infants: parseInt(searchParams.get("infants") || "0")
+  }
+
+  // Get booking-specific parameters
+  const bookingParams = {
+    itineraryId: searchParams.get("itineraryId"),
+    currency: searchParams.get("cur") || searchParams.get("userCurrency") || "INR",
+    countryCode: searchParams.get("ccde") || "IN",
+    correlationId: searchParams.get("crId"),
+    requestKey: searchParams.get("rKey"),
+    encodedFlightData: searchParams.get("xflt")
   }
 
   // Calculate pricing
@@ -150,11 +163,25 @@ const BookingReview = () => {
       setIsLoading(true)
       // Simulate API call
       setTimeout(() => {
-        navigate("/payment", { 
+        // Create payment URL with parameters
+        const paymentParams = new URLSearchParams({
+          itineraryId: bookingParams.itineraryId,
+          cur: bookingParams.currency,
+          ccde: bookingParams.countryCode,
+          crId: bookingParams.correlationId,
+          rKey: bookingParams.requestKey,
+          totalAmount: calculateTotalPrice().toString(),
+          from: searchData.from,
+          to: searchData.to,
+          passengers: searchData.passengers.toString()
+        })
+
+        navigate(`/payment?${paymentParams.toString()}`, { 
           state: { 
             bookingData, 
             flight: selectedFlight, 
             searchData,
+            bookingParams,
             totalPrice: calculateTotalPrice()
           } 
         })
@@ -162,6 +189,15 @@ const BookingReview = () => {
       }, 1000)
     }
   }
+
+  // Debug logging for parameters
+  useEffect(() => {
+    console.log("BookingReview Parameters:", {
+      searchData,
+      bookingParams,
+      selectedFlight: selectedFlight ? `${selectedFlight.airlineName} ${selectedFlight.flightNumber}` : "No flight"
+    })
+  }, [searchData, bookingParams, selectedFlight])
 
   // If no flight selected, redirect back
   if (!selectedFlight) {
