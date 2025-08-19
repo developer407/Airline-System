@@ -156,7 +156,7 @@ export const sidebarSections = [
   },
   {
     id: "bookings",
-    title: "Booking Management",
+    title: "Bookings",
     icon: Users,
     color: "from-orange-500 to-red-500",
     items: [

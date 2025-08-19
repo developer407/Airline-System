@@ -9,6 +9,7 @@ import PaymentPage from './pages/traveler/Payment/PaymentPage'
 import BookingHistory from './pages/traveler/BookingHistory/BookingHistory'
 import ETicket from './pages/traveler/Ticket/ETicket'
 import AirlineDashboard from './pages/airline/Dashboard/AirlineDashboard'
+import SuperAdminDashboard from './pages/super-admin/Dashboard/SuperAdminDashboard'
 
 function App() {
   return (
@@ -67,6 +68,9 @@ function App() {
           
           {/* Airline Dashboard Routes */}
           <Route path="/airline/*" element={<AirlineDashboard />} />
+          
+          {/* Super Admin Dashboard Routes */}
+          <Route path="/super-admin/*" element={<SuperAdminDashboard />} />
         </Routes>
       </div>
     </Router>
