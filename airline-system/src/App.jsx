@@ -1,6 +1,7 @@
 
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import LandingPage from './pages/LandingPage'
 import Header from './pages/traveler/Home/Header'
 import HomePage from './pages/traveler/Home/HomePage'
 import SearchResults from './pages/traveler/FlightList/SearchResults'
@@ -16,8 +17,11 @@ function App() {
     <Router>
       <div className="min-h-screen bg-gray-50">
         <Routes>
+          {/* Landing Page */}
+          <Route path="/" element={<LandingPage />} />
+          
           {/* Traveler Routes */}
-          <Route path="/" element={
+          <Route path="/traveler" element={
             <div>
               <Header />
               <HomePage />
