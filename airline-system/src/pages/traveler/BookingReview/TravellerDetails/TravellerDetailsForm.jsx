@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import {
   Users,
   Plus,
@@ -12,20 +12,35 @@ import {
   User,
   Calendar as CalendarIcon,
   Globe,
-  Plane
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Calendar } from "@/components/ui/calendar"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { cn } from "@/lib/utils"
-import DatePickerWithDropdown from "./DatePickerWithDropdown"
-
+  Plane,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import DatePickerWithDropdown from "./DatePickerWithDropdown";
 
 const TravellerDetailsForm = ({
   travelers,
@@ -33,16 +48,16 @@ const TravellerDetailsForm = ({
   onTravelersChange,
   onContactChange,
   validationErrors,
-  passengerCount
+  passengerCount,
 }) => {
-  const [showSaveProfile, setShowSaveProfile] = React.useState(false)
+  const [showSaveProfile, setShowSaveProfile] = React.useState(false);
 
-  const titles = ["Mr", "Ms", "Mrs", "Dr", "Master", "Miss"]
+  const titles = ["Mr", "Ms", "Mrs", "Dr", "Master", "Miss"];
   const genders = [
     { value: "M", label: "Male" },
     { value: "F", label: "Female" },
-    { value: "O", label: "Other" }
-  ]
+    { value: "O", label: "Other" },
+  ];
   const nationalities = [
     { value: "IN", label: "Indian" },
     { value: "US", label: "American" },
@@ -53,25 +68,25 @@ const TravellerDetailsForm = ({
     { value: "FR", label: "French" },
     { value: "JP", label: "Japanese" },
     { value: "SG", label: "Singaporean" },
-    { value: "AE", label: "UAE" }
-  ]
+    { value: "AE", label: "UAE" },
+  ];
   const countryCodes = [
     { value: "+91", label: "+91 (India)" },
     { value: "+1", label: "+1 (USA/Canada)" },
     { value: "+44", label: "+44 (UK)" },
     { value: "+61", label: "+61 (Australia)" },
     { value: "+65", label: "+65 (Singapore)" },
-    { value: "+971", label: "+971 (UAE)" }
-  ]
+    { value: "+971", label: "+971 (UAE)" },
+  ];
 
   const updateTraveler = (index, field, value) => {
-    const updatedTravelers = [...travelers]
+    const updatedTravelers = [...travelers];
     updatedTravelers[index] = {
       ...updatedTravelers[index],
-      [field]: value
-    }
-    onTravelersChange(updatedTravelers)
-  }
+      [field]: value,
+    };
+    onTravelersChange(updatedTravelers);
+  };
 
   const addTraveler = (type = "ADULT") => {
     const newTraveler = {
@@ -83,47 +98,50 @@ const TravellerDetailsForm = ({
       gender: "",
       dateOfBirth: "",
       nationality: "IN",
-      frequentFlyerNumber: ""
-    }
-    onTravelersChange([...travelers, newTraveler])
-  }
+      frequentFlyerNumber: "",
+    };
+    onTravelersChange([...travelers, newTraveler]);
+  };
 
   const removeTraveler = (index) => {
     if (travelers.length > 1) {
-      const updatedTravelers = travelers.filter((_, i) => i !== index)
-      onTravelersChange(updatedTravelers)
+      const updatedTravelers = travelers.filter((_, i) => i !== index);
+      onTravelersChange(updatedTravelers);
     }
-  }
+  };
 
   const updateContactInfo = (field, value) => {
     onContactChange({
       ...contactInfo,
-      [field]: value
-    })
-  }
+      [field]: value,
+    });
+  };
 
   const getAgeFromDOB = (dob) => {
-    if (!dob) return null
-    const today = new Date()
-    const birthDate = new Date(dob)
-    let age = today.getFullYear() - birthDate.getFullYear()
-    const monthDiff = today.getMonth() - birthDate.getMonth()
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      age--
+    if (!dob) return null;
+    const today = new Date();
+    const birthDate = new Date(dob);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
     }
-    return age
-  }
+    return age;
+  };
 
   const getTravelerType = (age) => {
-    if (age === null) return "ADULT"
-    if (age < 2) return "INFANT"
-    if (age < 12) return "CHILD"
-    return "ADULT"
-  }
+    if (age === null) return "ADULT";
+    if (age < 2) return "INFANT";
+    if (age < 12) return "CHILD";
+    return "ADULT";
+  };
 
   const TravelerCard = ({ traveler, index }) => {
-    const age = getAgeFromDOB(traveler.dateOfBirth)
-    const detectedType = getTravelerType(age)
+    const age = getAgeFromDOB(traveler.dateOfBirth);
+    const detectedType = getTravelerType(age);
 
     return (
       <Card className="overflow-hidden">
@@ -134,12 +152,15 @@ const TravellerDetailsForm = ({
               <span>
                 Traveler {index + 1}
                 {age !== null && (
-                  <span className={cn(
-                    "ml-2 px-2 py-1 rounded-full text-xs font-medium",
-                    detectedType === "ADULT" && "bg-blue-100 text-blue-800",
-                    detectedType === "CHILD" && "bg-green-100 text-green-800",
-                    detectedType === "INFANT" && "bg-purple-100 text-purple-800"
-                  )}>
+                  <span
+                    className={cn(
+                      "ml-2 px-2 py-1 rounded-full text-xs font-medium",
+                      detectedType === "ADULT" && "bg-blue-100 text-blue-800",
+                      detectedType === "CHILD" && "bg-green-100 text-green-800",
+                      detectedType === "INFANT" &&
+                        "bg-purple-100 text-purple-800"
+                    )}
+                  >
                     {detectedType} {age !== null && `(${age}y)`}
                   </span>
                 )}
@@ -157,7 +178,9 @@ const TravellerDetailsForm = ({
             )}
           </div>
           {index === 0 && (
-            <p className="text-sm text-blue-600 font-medium">Primary Traveler</p>
+            <p className="text-sm text-blue-600 font-medium">
+              Primary Traveler
+            </p>
           )}
         </CardHeader>
 
@@ -168,17 +191,22 @@ const TravellerDetailsForm = ({
               <Label htmlFor={`title-${index}`}>Title *</Label>
               <Select
                 value={traveler.title}
-                onValueChange={(value) => updateTraveler(index, 'title', value)}
+                onValueChange={(value) => updateTraveler(index, "title", value)}
               >
-                <SelectTrigger className={cn(
-                  "w-full mt-1",
-                  validationErrors[`traveler_${index}_title`] && "border-red-300 bg-red-50"
-                )}>
+                <SelectTrigger
+                  className={cn(
+                    "w-full mt-1",
+                    validationErrors[`traveler_${index}_title`] &&
+                      "border-red-300 bg-red-50"
+                  )}
+                >
                   <SelectValue placeholder="Select title" />
                 </SelectTrigger>
                 <SelectContent>
-                  {titles.map(title => (
-                    <SelectItem key={title} value={title}>{title}</SelectItem>
+                  {titles.map((title) => (
+                    <SelectItem key={title} value={title}>
+                      {title}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -189,10 +217,13 @@ const TravellerDetailsForm = ({
               <Input
                 id={`firstName-${index}`}
                 value={traveler.firstName}
-                onChange={(e) => updateTraveler(index, 'firstName', e.target.value)}
+                onChange={(e) =>
+                  updateTraveler(index, "firstName", e.target.value)
+                }
                 placeholder="As per passport"
                 className={cn(
-                  validationErrors[`traveler_${index}_firstName`] && "border-red-300 bg-red-50"
+                  validationErrors[`traveler_${index}_firstName`] &&
+                    "border-red-300 bg-red-50"
                 )}
               />
               {validationErrors[`traveler_${index}_firstName`] && (
@@ -207,10 +238,13 @@ const TravellerDetailsForm = ({
               <Input
                 id={`lastName-${index}`}
                 value={traveler.lastName}
-                onChange={(e) => updateTraveler(index, 'lastName', e.target.value)}
+                onChange={(e) =>
+                  updateTraveler(index, "lastName", e.target.value)
+                }
                 placeholder="As per passport"
                 className={cn(
-                  validationErrors[`traveler_${index}_lastName`] && "border-red-300 bg-red-50"
+                  validationErrors[`traveler_${index}_lastName`] &&
+                    "border-red-300 bg-red-50"
                 )}
               />
               {validationErrors[`traveler_${index}_lastName`] && (
@@ -224,17 +258,24 @@ const TravellerDetailsForm = ({
               <Label htmlFor={`gender-${index}`}>Gender *</Label>
               <Select
                 value={traveler.gender}
-                onValueChange={(value) => updateTraveler(index, 'gender', value)}
+                onValueChange={(value) =>
+                  updateTraveler(index, "gender", value)
+                }
               >
-                <SelectTrigger className={cn(
-                  "w-full mt-1",
-                  validationErrors[`traveler_${index}_gender`] && "border-red-300 bg-red-50"
-                )}>
+                <SelectTrigger
+                  className={cn(
+                    "w-full mt-1",
+                    validationErrors[`traveler_${index}_gender`] &&
+                      "border-red-300 bg-red-50"
+                  )}
+                >
                   <SelectValue placeholder="Select gender" />
                 </SelectTrigger>
                 <SelectContent>
-                  {genders.map(gender => (
-                    <SelectItem key={gender.value} value={gender.value}>{gender.label}</SelectItem>
+                  {genders.map((gender) => (
+                    <SelectItem key={gender.value} value={gender.value}>
+                      {gender.label}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -249,16 +290,22 @@ const TravellerDetailsForm = ({
           {/* Details Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <Label htmlFor={`dob-${index}`} className="flex items-center gap-2">
+              <Label
+                htmlFor={`dob-${index}`}
+                className="flex items-center gap-2"
+              >
                 <CalendarIcon className="h-4 w-4" />
                 Date of Birth *
               </Label>
               <div className="mt-1">
                 <DatePickerWithDropdown
                   value={traveler.dateOfBirth}
-                  onChange={(date) => updateTraveler(index, 'dateOfBirth', date)}
+                  onChange={(date) =>
+                    updateTraveler(index, "dateOfBirth", date)
+                  }
                   className={cn(
-                    validationErrors[`traveler_${index}_dob`] && "border-red-300 bg-red-50"
+                    validationErrors[`traveler_${index}_dob`] &&
+                      "border-red-300 bg-red-50"
                   )}
                 />
               </div>
@@ -270,34 +317,46 @@ const TravellerDetailsForm = ({
             </div>
 
             <div>
-              <Label htmlFor={`nationality-${index}`} className="flex items-center gap-2">
+              <Label
+                htmlFor={`nationality-${index}`}
+                className="flex items-center gap-2"
+              >
                 <Globe className="h-4 w-4" />
                 Nationality *
               </Label>
               <Select
                 value={traveler.nationality}
-                onValueChange={(value) => updateTraveler(index, 'nationality', value)}
+                onValueChange={(value) =>
+                  updateTraveler(index, "nationality", value)
+                }
               >
                 <SelectTrigger className="w-full mt-1">
                   <SelectValue placeholder="Select nationality" />
                 </SelectTrigger>
                 <SelectContent>
-                  {nationalities.map(country => (
-                    <SelectItem key={country.value} value={country.value}>{country.label}</SelectItem>
+                  {nationalities.map((country) => (
+                    <SelectItem key={country.value} value={country.value}>
+                      {country.label}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </div>
 
             <div>
-              <Label htmlFor={`ffn-${index}`} className="flex items-center gap-2">
+              <Label
+                htmlFor={`ffn-${index}`}
+                className="flex items-center gap-2"
+              >
                 <Plane className="h-4 w-4" />
                 Frequent Flyer Number
               </Label>
               <Input
                 id={`ffn-${index}`}
                 value={traveler.frequentFlyerNumber}
-                onChange={(e) => updateTraveler(index, 'frequentFlyerNumber', e.target.value)}
+                onChange={(e) =>
+                  updateTraveler(index, "frequentFlyerNumber", e.target.value)
+                }
                 placeholder="Optional"
               />
             </div>
@@ -310,9 +369,12 @@ const TravellerDetailsForm = ({
                 <div className="flex items-start gap-2 p-3 bg-purple-50 border border-purple-200 rounded-lg">
                   <AlertCircle className="h-4 w-4 text-purple-600 mt-0.5" />
                   <div className="text-sm">
-                    <p className="font-medium text-purple-900">Infant Travel Policy</p>
+                    <p className="font-medium text-purple-900">
+                      Infant Travel Policy
+                    </p>
                     <p className="text-purple-800 mt-1">
-                      Infants under 2 years travel on adult's lap. Separate seat can be purchased if needed.
+                      Infants under 2 years travel on adult's lap. Separate seat
+                      can be purchased if needed.
                     </p>
                   </div>
                 </div>
@@ -322,9 +384,12 @@ const TravellerDetailsForm = ({
                 <div className="flex items-start gap-2 p-3 bg-green-50 border border-green-200 rounded-lg">
                   <AlertCircle className="h-4 w-4 text-green-600 mt-0.5" />
                   <div className="text-sm">
-                    <p className="font-medium text-green-900">Child Travel Policy</p>
+                    <p className="font-medium text-green-900">
+                      Child Travel Policy
+                    </p>
                     <p className="text-green-800 mt-1">
-                      Children between 2-12 years require their own seat. Unaccompanied minor service may be required.
+                      Children between 2-12 years require their own seat.
+                      Unaccompanied minor service may be required.
                     </p>
                   </div>
                 </div>
@@ -333,8 +398,8 @@ const TravellerDetailsForm = ({
           )}
         </CardContent>
       </Card>
-    )
-  }
+    );
+  };
 
   return (
     <Card>
@@ -411,21 +476,27 @@ const TravellerDetailsForm = ({
                 <div className="flex gap-2 mt-1">
                   <Select
                     value={contactInfo.countryCode}
-                    onValueChange={(value) => updateContactInfo('countryCode', value)}
+                    onValueChange={(value) =>
+                      updateContactInfo("countryCode", value)
+                    }
                   >
                     <SelectTrigger className="w-36">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {countryCodes.map(code => (
-                        <SelectItem key={code.value} value={code.value}>{code.label}</SelectItem>
+                      {countryCodes.map((code) => (
+                        <SelectItem key={code.value} value={code.value}>
+                          {code.label}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                   <Input
                     id="mobile"
                     value={contactInfo.mobile}
-                    onChange={(e) => updateContactInfo('mobile', e.target.value)}
+                    onChange={(e) =>
+                      updateContactInfo("mobile", e.target.value)
+                    }
                     placeholder="Enter mobile number"
                     className={cn(
                       "flex-1",
@@ -434,7 +505,9 @@ const TravellerDetailsForm = ({
                   />
                 </div>
                 {validationErrors.mobile && (
-                  <p className="text-red-600 text-xs mt-1">{validationErrors.mobile}</p>
+                  <p className="text-red-600 text-xs mt-1">
+                    {validationErrors.mobile}
+                  </p>
                 )}
               </div>
 
@@ -447,7 +520,7 @@ const TravellerDetailsForm = ({
                   id="email"
                   type="email"
                   value={contactInfo.email}
-                  onChange={(e) => updateContactInfo('email', e.target.value)}
+                  onChange={(e) => updateContactInfo("email", e.target.value)}
                   placeholder="Enter email address"
                   className={cn(
                     "mt-1",
@@ -455,7 +528,9 @@ const TravellerDetailsForm = ({
                   )}
                 />
                 {validationErrors.email && (
-                  <p className="text-red-600 text-xs mt-1">{validationErrors.email}</p>
+                  <p className="text-red-600 text-xs mt-1">
+                    {validationErrors.email}
+                  </p>
                 )}
               </div>
             </div>
@@ -468,7 +543,7 @@ const TravellerDetailsForm = ({
               <Input
                 id="gst"
                 value={contactInfo.gstNumber}
-                onChange={(e) => updateContactInfo('gstNumber', e.target.value)}
+                onChange={(e) => updateContactInfo("gstNumber", e.target.value)}
                 placeholder="Enter GST number for business travel"
                 className="mt-1"
               />
@@ -495,7 +570,10 @@ const TravellerDetailsForm = ({
               onCheckedChange={setShowSaveProfile}
             />
             <div>
-              <Label htmlFor="saveProfile" className="font-medium text-gray-900 cursor-pointer">
+              <Label
+                htmlFor="saveProfile"
+                className="font-medium text-gray-900 cursor-pointer"
+              >
                 Save traveler details to profile
               </Label>
               <p className="text-sm text-gray-600">
@@ -512,12 +590,19 @@ const TravellerDetailsForm = ({
             <div className="flex items-start gap-2">
               <AlertCircle className="h-4 w-4 text-amber-600 mt-0.5" />
               <div className="text-sm">
-                <p className="font-medium text-amber-900">Important Reminders</p>
+                <p className="font-medium text-amber-900">
+                  Important Reminders
+                </p>
                 <ul className="text-amber-800 mt-1 space-y-1 ml-4">
-                  <li>• Names must match exactly as per government-issued photo ID</li>
+                  <li>
+                    • Names must match exactly as per government-issued photo ID
+                  </li>
                   <li>• Passport required for international travel</li>
                   <li>• Check visa requirements for your destination</li>
-                  <li>• Arrive at airport 2 hours early for domestic, 3 hours for international</li>
+                  <li>
+                    • Arrive at airport 2 hours early for domestic, 3 hours for
+                    international
+                  </li>
                 </ul>
               </div>
             </div>
@@ -525,7 +610,7 @@ const TravellerDetailsForm = ({
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default TravellerDetailsForm
+export default TravellerDetailsForm;
