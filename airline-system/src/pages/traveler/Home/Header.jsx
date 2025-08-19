@@ -12,6 +12,7 @@ const Header = () => {
     { name: "Home", href: "/", current: location.pathname === "/" },
     { name: "My Bookings", href: "/bookings", current: location.pathname === "/bookings" },
     { name: "Airlines", href: "/airlines", current: location.pathname === "/airlines" },
+    { name: "Airline Dashboard", href: "/airline", current: location.pathname.startsWith("/airline") },
   ]
 
   const toggleMobileMenu = () => {
