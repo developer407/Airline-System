@@ -93,7 +93,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
   ];
 
   const FilterSection = ({ title, id, icon: Icon, children }) => (
-    <div className="border-b border-gray-100 last:border-b-0">
+    <div className="border-b border-border last:border-b-0">
       <Button
         onClick={() => toggleSection(id)}
         className="w-full flex items-center justify-between p-4 text-left rounded-none"
@@ -132,7 +132,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
           onChange={(e) =>
             onChange({ ...value, min: parseInt(e.target.value) })
           }
-          className="absolute w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb"
+          className="absolute w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer slider-thumb"
         />
         <input
           type="range"
@@ -142,7 +142,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
           onChange={(e) =>
             onChange({ ...value, max: parseInt(e.target.value) })
           }
-          className="absolute w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb"
+          className="absolute w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer slider-thumb"
         />
       </div>
       <div className="flex justify-between gap-2">
@@ -211,7 +211,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
                 <RadioGroupItem value={option.value} id={`stops-${option.value}`} />
                 <Label
                   htmlFor={`stops-${option.value}`}
-                  className="text-sm text-gray-700 cursor-pointer hover:text-foreground transition-colors"
+                  className="text-sm text-foreground cursor-pointer hover:text-primary transition-colors"
                 >
                   {option.label}
                 </Label>
@@ -262,7 +262,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
                   <span className="text-lg">
                     {getAirlineLogo(airline.code)}
                   </span>
-                  <span className="text-sm text-gray-700 hover:text-foreground transition-colors">
+                  <span className="text-sm text-foreground hover:text-primary transition-colors">
                     {airline.name}
                   </span>
                   <span className="text-xs text-muted-foreground ml-auto">
@@ -289,7 +289,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
                 <RadioGroupItem value={range.value} id={`departure-${range.value}`} />
                 <Label
                   htmlFor={`departure-${range.value}`}
-                  className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-foreground transition-colors"
+                  className="flex items-center gap-2 cursor-pointer text-sm text-foreground hover:text-primary transition-colors"
                 >
                   <span className="text-base">{range.icon}</span>
                   <span>{range.label}</span>
@@ -314,7 +314,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
                 <RadioGroupItem value={range.value} id={`arrival-${range.value}`} />
                 <Label
                   htmlFor={`arrival-${range.value}`}
-                  className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-foreground transition-colors"
+                  className="flex items-center gap-2 cursor-pointer text-sm text-foreground hover:text-primary transition-colors"
                 >
                   <span className="text-base">{range.icon}</span>
                   <span>{range.label}</span>
@@ -340,9 +340,9 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
               onChange={(e) =>
                 updateFilter("maxDuration", parseInt(e.target.value))
               }
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb"
+              className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer slider-thumb"
             />
-            <p className="text-sm text-center text-gray-700">
+            <p className="text-sm text-center text-foreground">
               Up to {Math.floor(filters.maxDuration / 60)}h{" "}
               {filters.maxDuration % 60}m
             </p>
@@ -358,7 +358,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
                 <Shield className="h-4 w-4 text-green-600" />
                 <Label
                   htmlFor="refundable-filter"
-                  className="text-sm text-gray-700 cursor-pointer hover:text-foreground transition-colors"
+                  className="text-sm text-foreground cursor-pointer hover:text-primary transition-colors"
                 >
                   Refundable Only
                 </Label>
@@ -372,7 +372,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
 
             {/* Alliance Filter */}
             <div>
-              <Label className="text-sm font-medium text-gray-700 mb-2 block">
+              <Label className="text-sm font-medium text-foreground mb-2 block">
                 Alliance
               </Label>
               <Select
@@ -398,7 +398,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
                 <Luggage className="h-4 w-4 text-primary" />
                 <Label
                   htmlFor="baggage-filter"
-                  className="text-sm text-gray-700 cursor-pointer hover:text-foreground transition-colors"
+                  className="text-sm text-foreground cursor-pointer hover:text-primary transition-colors"
                 >
                   Baggage Included
                 </Label>

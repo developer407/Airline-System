@@ -175,16 +175,16 @@ const TravellerDetailsForm = ({
 
     return (
       <Card className="overflow-hidden">
-        <CardHeader className="bg-gray-50 pb-3">
+        <CardHeader className="bg-muted/50 pb-3">
           <div className="flex items-center justify-between">
             <CardTitle className="text-lg flex items-center gap-2">
-              <User className="h-5 w-5 text-blue-600" />
+              <User className="h-5 w-5 text-primary" />
               <span>
                 Traveler {index + 1}
                 {age !== null && (
                   <span className={cn(
                     "ml-2 px-2 py-1 rounded-full text-xs font-medium",
-                    detectedType === "ADULT" && "bg-blue-100 text-blue-800",
+                    detectedType === "ADULT" && "bg-primary/20 text-primary",
                     detectedType === "CHILD" && "bg-green-100 text-green-800",
                     detectedType === "INFANT" && "bg-purple-100 text-purple-800"
                   )}>
@@ -205,7 +205,7 @@ const TravellerDetailsForm = ({
             )}
           </div>
           {index === 0 && (
-            <p className="text-sm text-blue-600 font-medium">Primary Traveler</p>
+            <p className="text-sm text-primary font-medium">Primary Traveler</p>
           )}
         </CardHeader>
 
@@ -388,10 +388,10 @@ const TravellerDetailsForm = ({
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Users className="h-5 w-5 text-blue-600" />
+          <Users className="h-5 w-5 text-primary" />
           <span>Traveler Details</span>
         </CardTitle>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-muted-foreground">
           Enter details for all passengers as per government-issued ID
         </p>
       </CardHeader>
@@ -407,7 +407,7 @@ const TravellerDetailsForm = ({
         {/* Add Traveler Buttons */}
         {travelers.length < passengerCount && (
           <div className="space-y-2">
-            <h4 className="font-medium text-gray-900">Add More Travelers</h4>
+            <h4 className="font-medium text-foreground">Add More Travelers</h4>
             <div className="flex flex-wrap gap-2">
               <Button
                 variant="outline"
@@ -438,13 +438,13 @@ const TravellerDetailsForm = ({
         )}
 
         {/* Contact Information */}
-        <Card className="bg-blue-50 border-blue-200">
+        <Card className="bg-muted/30 border-border">
           <CardHeader className="pb-3">
             <CardTitle className="text-lg flex items-center gap-2">
-              <Mail className="h-5 w-5 text-blue-600" />
+              <Mail className="h-5 w-5 text-primary" />
               <span>Contact Information</span>
             </CardTitle>
-            <p className="text-sm text-blue-700">
+            <p className="text-sm text-muted-foreground">
               Booking confirmation and updates will be sent to this contact
             </p>
           </CardHeader>
@@ -520,14 +520,14 @@ const TravellerDetailsForm = ({
                 placeholder="Enter GST number for business travel"
                 className="mt-1"
               />
-              <p className="text-xs text-gray-600 mt-1">
+              <p className="text-xs text-muted-foreground mt-1">
                 GST invoice will be generated if GST number is provided
               </p>
             </div>
 
-            <div className="flex items-center gap-2 p-3 bg-white border border-blue-200 rounded-lg">
+            <div className="flex items-center gap-2 p-3 bg-card border border-border rounded-lg">
               <Check className="h-4 w-4 text-green-600" />
-              <span className="text-sm text-gray-700">
+              <span className="text-sm text-foreground">
                 Send booking details and updates to this contact information
               </span>
             </div>
@@ -535,7 +535,7 @@ const TravellerDetailsForm = ({
         </Card>
 
         {/* Save Profile Option */}
-        <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+        <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
           <div className="flex items-center gap-3">
             <Checkbox
               id="saveProfile"
@@ -543,25 +543,25 @@ const TravellerDetailsForm = ({
               onCheckedChange={setShowSaveProfile}
             />
             <div>
-              <Label htmlFor="saveProfile" className="font-medium text-gray-900 cursor-pointer">
+              <Label htmlFor="saveProfile" className="font-medium text-foreground cursor-pointer">
                 Save traveler details to profile
               </Label>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 Quick booking for future trips with saved passenger information
               </p>
             </div>
           </div>
-          <Save className="h-5 w-5 text-gray-400" />
+          <Save className="h-5 w-5 text-muted-foreground" />
         </div>
 
         {/* Important Notes */}
         <div className="space-y-3">
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
+          <div className="bg-muted/30 border border-border rounded-lg p-3">
             <div className="flex items-start gap-2">
               <AlertCircle className="h-4 w-4 text-amber-600 mt-0.5" />
               <div className="text-sm">
-                <p className="font-medium text-amber-900">Important Reminders</p>
-                <ul className="text-amber-800 mt-1 space-y-1 ml-4">
+                <p className="font-medium text-foreground">Important Reminders</p>
+                <ul className="text-muted-foreground mt-1 space-y-1 ml-4">
                   <li>• Names must match exactly as per government-issued photo ID</li>
                   <li>• Passport required for international travel</li>
                   <li>• Check visa requirements for your destination</li>

@@ -77,9 +77,9 @@ const FareUpgradeBox = ({ selectedFare, onFareChange, passengerCount }) => {
       className={cn(
         "relative border-2 rounded-lg p-4 cursor-pointer transition-all duration-200 hover:shadow-md",
         isSelected 
-          ? "border-blue-500 bg-blue-50 shadow-md" 
-          : "border-gray-200 hover:border-blue-300",
-        fare.popular && "ring-2 ring-orange-200 border-orange-300"
+          ? "border-primary bg-primary/10 shadow-md" 
+          : "border-border hover:border-primary/50",
+        fare.popular && "ring-2 ring-orange-200/50 border-orange-300"
       )}
       onClick={onSelect}
     >
@@ -104,15 +104,15 @@ const FareUpgradeBox = ({ selectedFare, onFareChange, passengerCount }) => {
             <div className={cn(
               "w-4 h-4 rounded-full border-2",
               isSelected 
-                ? "border-blue-500 bg-blue-500" 
-                : "border-gray-300"
+                ? "border-primary bg-primary" 
+                : "border-border"
             )}>
               {isSelected && <Check className="w-3 h-3 text-white" />}
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900">{fare.name}</h4>
+              <h4 className="font-semibold text-foreground">{fare.name}</h4>
               {fare.isDefault && (
-                <span className="text-xs text-gray-500">Default selection</span>
+                <span className="text-xs text-muted-foreground">Default selection</span>
               )}
             </div>
           </div>
@@ -120,15 +120,15 @@ const FareUpgradeBox = ({ selectedFare, onFareChange, passengerCount }) => {
           <div className="text-right">
             <div className="flex items-center gap-2">
               {fare.originalPrice && (
-                <span className="text-sm text-gray-500 line-through">
+                <span className="text-sm text-muted-foreground line-through">
                   ₹{calculateTotalPrice(fare.originalPrice).toLocaleString()}
                 </span>
               )}
-              <span className="text-xl font-bold text-gray-900">
+              <span className="text-xl font-bold text-foreground">
                 ₹{calculateTotalPrice(fare.price).toLocaleString()}
               </span>
             </div>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-muted-foreground">
               for {passengerCount} passenger{passengerCount > 1 ? 's' : ''}
             </p>
           </div>
@@ -136,17 +136,17 @@ const FareUpgradeBox = ({ selectedFare, onFareChange, passengerCount }) => {
 
         {/* Benefits */}
         <div className="space-y-2">
-          <h5 className="text-sm font-medium text-gray-700">What's included:</h5>
+          <h5 className="text-sm font-medium text-foreground">What's included:</h5>
           <div className="space-y-1">
             {fare.benefits.slice(0, 4).map((benefit, index) => (
-              <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
+              <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Check className="w-3 h-3 text-green-500 flex-shrink-0" />
                 <span>{benefit}</span>
               </div>
             ))}
             {fare.benefits.length > 4 && (
               <button 
-                className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+                className="text-sm text-primary hover:text-primary/80 font-medium"
                 onClick={(e) => {
                   e.stopPropagation()
                   setShowTooltip(showTooltip === fare.id ? "" : fare.id)
@@ -161,7 +161,7 @@ const FareUpgradeBox = ({ selectedFare, onFareChange, passengerCount }) => {
         {/* Premium Features */}
         {fare.features && isSelected && (
           <div className="mt-4 space-y-3 animate-in slide-in-from-top-2 fade-in duration-200">
-            <h5 className="text-sm font-medium text-gray-700">Premium features:</h5>
+            <h5 className="text-sm font-medium text-foreground">Premium features:</h5>
             <div className="grid grid-cols-2 gap-3">
               {fare.features.map((feature, index) => (
                 <div 
@@ -170,10 +170,10 @@ const FareUpgradeBox = ({ selectedFare, onFareChange, passengerCount }) => {
                   onMouseEnter={() => setShowTooltip(`${fare.id}-${index}`)}
                   onMouseLeave={() => setShowTooltip("")}
                 >
-                  <div className="flex items-center gap-2 p-2 bg-white rounded border border-gray-100">
-                    <feature.icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span className="text-xs font-medium text-gray-900">{feature.text}</span>
-                    <Info className="w-3 h-3 text-gray-400" />
+                  <div className="flex items-center gap-2 p-2 bg-card rounded border border-border">
+                    <feature.icon className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span className="text-xs font-medium text-foreground">{feature.text}</span>
+                    <Info className="w-3 h-3 text-muted-foreground" />
                   </div>
                   
                   {/* Tooltip */}
@@ -193,7 +193,7 @@ const FareUpgradeBox = ({ selectedFare, onFareChange, passengerCount }) => {
         {!isSelected && (
           <Button 
             variant="outline" 
-            className="w-full mt-3 border-blue-200 text-blue-600 hover:bg-blue-50"
+            className="w-full mt-3 border-border text-primary hover:bg-muted"
             onClick={(e) => {
               e.stopPropagation()
               onSelect()
@@ -213,11 +213,11 @@ const FareUpgradeBox = ({ selectedFare, onFareChange, passengerCount }) => {
 
       {/* Extended Benefits Tooltip */}
       {showTooltip === fare.id && fare.benefits.length > 4 && (
-        <div className="absolute z-20 top-full left-0 mt-2 p-4 bg-white border border-gray-200 rounded-lg shadow-xl max-w-80">
-          <h6 className="font-medium text-gray-900 mb-2">All benefits included:</h6>
+        <div className="absolute z-20 top-full left-0 mt-2 p-4 bg-card border border-border rounded-lg shadow-xl max-w-80">
+          <h6 className="font-medium text-foreground mb-2">All benefits included:</h6>
           <div className="space-y-1">
             {fare.benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
+              <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Check className="w-3 h-3 text-green-500 flex-shrink-0" />
                 <span>{benefit}</span>
               </div>
@@ -233,10 +233,10 @@ const FareUpgradeBox = ({ selectedFare, onFareChange, passengerCount }) => {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <CreditCard className="h-5 w-5 text-blue-600" />
+          <CreditCard className="h-5 w-5 text-primary" />
           <span>Choose Your Fare</span>
         </CardTitle>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-muted-foreground">
           Select the fare option that best suits your needs
         </p>
       </CardHeader>
@@ -274,7 +274,7 @@ const FareUpgradeBox = ({ selectedFare, onFareChange, passengerCount }) => {
         )}
 
         {/* Terms & Conditions */}
-        <div className="text-xs text-gray-500 space-y-1">
+        <div className="text-xs text-muted-foreground space-y-1">
           <p>• Fare rules and restrictions apply for all options</p>
           <p>• Premium benefits are subject to airline's terms and conditions</p>
           <p>• Delay protection coverage is provided by third-party insurance</p>

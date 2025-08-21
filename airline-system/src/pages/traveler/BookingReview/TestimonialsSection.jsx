@@ -143,7 +143,7 @@ const TestimonialsSection = () => {
 
         {/* Testimonial Carousel */}
         <div className="relative">
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-100">
+          <div className="bg-muted/30 rounded-lg p-6 border border-border">
             <div className="flex items-start gap-4">
               <div className="text-blue-400 opacity-50">
                 <Quote className="h-8 w-8" />
@@ -154,22 +154,22 @@ const TestimonialsSection = () => {
                   {renderStars(testimonials[currentIndex].rating)}
                 </div>
                 
-                <p className="text-gray-700 mb-4 leading-relaxed">
+                <p className="text-foreground mb-4 leading-relaxed">
                   "{testimonials[currentIndex].text}"
                 </p>
                 
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="font-semibold text-gray-900">
+                    <h4 className="font-semibold text-foreground">
                       {testimonials[currentIndex].name}
                     </h4>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-muted-foreground">
                       {testimonials[currentIndex].location} • {testimonials[currentIndex].tripType}
                     </p>
                   </div>
                   
                   <div className="text-right">
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-muted-foreground">
                       {testimonials[currentIndex].date}
                     </span>
                   </div>
@@ -213,19 +213,19 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Quick Stats */}
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+        <div className="bg-muted/30 border border-border rounded-lg p-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
             <div>
-              <div className="text-2xl font-bold text-green-700">₹2,500+</div>
-              <div className="text-sm text-green-600">Average Savings per Booking</div>
+              <div className="text-2xl font-bold text-foreground">₹2,500+</div>
+              <div className="text-sm text-muted-foreground">Average Savings per Booking</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-green-700">15 mins</div>
-              <div className="text-sm text-green-600">Average Booking Time</div>
+              <div className="text-2xl font-bold text-foreground">15 mins</div>
+              <div className="text-sm text-muted-foreground">Average Booking Time</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-green-700">24/7</div>
-              <div className="text-sm text-green-600">Customer Support</div>
+              <div className="text-2xl font-bold text-foreground">24/7</div>
+              <div className="text-sm text-muted-foreground">Customer Support</div>
             </div>
           </div>
         </div>

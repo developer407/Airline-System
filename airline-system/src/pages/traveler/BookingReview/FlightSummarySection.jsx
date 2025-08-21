@@ -216,7 +216,7 @@ const FlightSummarySection = ({ flight, searchData, isActive, onToggle }) => {
           </div>
 
           {/* Flight Info Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-gray-100">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-border">
             <div>
               <p className="text-xs text-muted-foreground mb-1">Duration</p>
               <p className="font-medium text-foreground">{formatDuration(leg.duration)}</p>
@@ -238,7 +238,7 @@ const FlightSummarySection = ({ flight, searchData, isActive, onToggle }) => {
           </div>
 
           {/* Baggage Allowance */}
-          <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+          <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
             <div className="flex items-center gap-2">
               <Luggage className="h-4 w-4 text-primary" />
               <div>
@@ -248,22 +248,22 @@ const FlightSummarySection = ({ flight, searchData, isActive, onToggle }) => {
                 </p>
               </div>
             </div>
-            <Button variant="outline" size="sm" className="text-primary border-blue-200 hover:bg-blue-100">
+            <Button variant="outline" size="sm" className="text-primary border-border hover:bg-muted">
               Add Baggage
             </Button>
           </div>
 
           {/* Layover Info (if stops > 0) */}
           {leg.stops > 0 && (
-            <div className="p-3 bg-orange-50 border border-orange-200 rounded-lg">
+            <div className="p-3 bg-muted/30 border border-border rounded-lg">
               <div className="flex items-start gap-2">
                 <Clock className="h-4 w-4 text-orange-600 mt-0.5" />
                 <div>
-                  <h6 className="font-medium text-orange-900">Layover Information</h6>
-                  <p className="text-sm text-orange-800 mt-1">
+                  <h6 className="font-medium text-foreground">Layover Information</h6>
+                  <p className="text-sm text-muted-foreground mt-1">
                     2h 15m layover in Mumbai (BOM) • Self-transfer required
                   </p>
-                  <p className="text-xs text-orange-700 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     Minimum connection time: 60 minutes • Airport shuttle available
                   </p>
                 </div>
@@ -300,11 +300,11 @@ const FlightSummarySection = ({ flight, searchData, isActive, onToggle }) => {
           <div className="space-y-3">
             {/* Nearby Airport Warning */}
             {searchData.from === "GZB" && (
-              <div className="flex items-start gap-2 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+              <div className="flex items-start gap-2 p-3 bg-muted/30 border border-border rounded-lg">
                 <AlertTriangle className="h-4 w-4 text-amber-600 mt-0.5" />
                 <div>
-                  <h6 className="font-medium text-amber-900">Nearby Airport Notice</h6>
-                  <p className="text-sm text-amber-800 mt-1">
+                  <h6 className="font-medium text-foreground">Nearby Airport Notice</h6>
+                  <p className="text-sm text-muted-foreground mt-1">
                     Your flight departs from Indira Gandhi International (IGI), New Delhi - approximately 45 km from Ghaziabad. 
                     Please plan your journey accordingly.
                   </p>
@@ -313,18 +313,18 @@ const FlightSummarySection = ({ flight, searchData, isActive, onToggle }) => {
             )}
 
             {/* Important Info Bar */}
-            <div className="flex items-center justify-between p-3 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="flex items-center justify-between p-3 bg-muted/30 border border-border rounded-lg">
               <div className="flex items-center gap-2">
                 <Info className="h-4 w-4 text-primary" />
-                <span className="text-sm font-medium text-blue-900">
+                <span className="text-sm font-medium text-foreground">
                   Web check-in opens 48 hours before departure
                 </span>
               </div>
               <div className="flex gap-2">
-                <Button variant="outline" size="sm" className="text-primary border-blue-200 hover:bg-blue-100">
+                <Button variant="outline" size="sm" className="text-primary border-border hover:bg-muted">
                   Cancellation Rules
                 </Button>
-                <Button variant="outline" size="sm" className="text-primary border-blue-200 hover:bg-blue-100">
+                <Button variant="outline" size="sm" className="text-primary border-border hover:bg-muted">
                   Fare Rules
                 </Button>
               </div>

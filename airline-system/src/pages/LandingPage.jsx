@@ -177,22 +177,22 @@ const LandingPage = () => {
       )}
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 bg-pattern">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-muted/30 via-background to-muted/20 bg-pattern">
         {/* Floating Elements */}
         <FloatingElements />
         
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl animate-pulse animate-gradient"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl animate-pulse animate-gradient" style={{animationDelay: '2s'}}></div>
-          <div className="absolute top-1/2 left-1/4 w-32 h-32 bg-cyan-400/20 rounded-full blur-2xl animate-float" style={{animationDelay: '1s'}}></div>
-          <div className="absolute top-1/3 right-1/3 w-24 h-24 bg-pink-400/20 rounded-full blur-xl animate-float" style={{animationDelay: '3s'}}></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse animate-gradient"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse animate-gradient" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-1/2 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-2xl animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/3 right-1/3 w-24 h-24 bg-primary/20 rounded-full blur-xl animate-float" style={{animationDelay: '3s'}}></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             {/* Badge */}
-            <div className="inline-flex items-center px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-gray-200/50 text-sm text-gray-600 hover-glow cursor-pointer animate-slide-up">
+            <div className="inline-flex items-center px-4 py-2 bg-card/60 backdrop-blur-sm rounded-full border border-border/50 text-sm text-muted-foreground hover-glow cursor-pointer animate-slide-up">
               <Zap className="h-4 w-4 mr-2 text-yellow-500 animate-pulse" />
               <span>Trusted by 10M+ travelers worldwide</span>
             </div>
@@ -200,16 +200,16 @@ const LandingPage = () => {
             {/* Main Headline */}
             <div className="space-y-6">
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight animate-slide-up animate-delay-200">
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent animate-gradient">
+                <span className="bg-gradient-to-r from-primary via-primary to-primary bg-clip-text text-transparent animate-gradient">
                   The Future of
                 </span>
                 <br />
-                <span className="text-gray-900 animate-slide-up animate-delay-300">
+                <span className="text-foreground animate-slide-up animate-delay-300">
                   Flight Booking
                 </span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-slide-up animate-delay-500">
+              <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up animate-delay-500">
                 Whether you're a traveler seeking the perfect flight or an airline wanting to reach more customers, 
                 our platform connects you to endless possibilities in the skies.
               </p>
@@ -219,7 +219,7 @@ const LandingPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8 animate-slide-up animate-delay-700">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all transform hover:scale-110 hover-lift animate-pulse-glow"
+                className="bg-gradient-to-r from-primary to-primary hover:from-primary/90 hover:to-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all transform hover:scale-110 hover-lift animate-pulse-glow"
                 onClick={() => navigate('/traveler')}
               >
                 <Users className="h-5 w-5 mr-2" />
@@ -230,7 +230,7 @@ const LandingPage = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-2 border-gray-300 hover:border-purple-500 px-8 py-4 text-lg font-semibold rounded-xl transition-all transform hover:scale-110 hover-lift glass"
+                className="border-2 border-border hover:border-primary px-8 py-4 text-lg font-semibold rounded-xl transition-all transform hover:scale-110 hover-lift glass"
                 onClick={() => navigate('/airline/register')}
               >
                 <Plane className="h-5 w-5 mr-2 group-hover:rotate-12 transition-transform" />
@@ -240,7 +240,7 @@ const LandingPage = () => {
 
             {/* Demo Button */}
             <div className="pt-4">
-              <button className="inline-flex items-center text-gray-600 hover:text-purple-600 transition-colors group">
+              <button className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors group">
                 <PlayCircle className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
                 <span className="underline underline-offset-4">Watch Demo Video</span>
               </button>
@@ -250,49 +250,49 @@ const LandingPage = () => {
 
         {/* Floating Elements */}
         <div className="absolute bottom-20 left-20 hidden lg:block">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-gray-200/50 animate-float hover-lift cursor-pointer" style={{animationDelay: '0.5s'}}>
+          <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-border/50 animate-float hover-lift cursor-pointer" style={{animationDelay: '0.5s'}}>
             <div className="flex items-center space-x-3">
               <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-sm text-gray-600">Live flight tracking</span>
+              <span className="text-sm text-muted-foreground">Live flight tracking</span>
             </div>
           </div>
         </div>
 
         <div className="absolute top-40 right-20 hidden lg:block">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-gray-200/50 animate-float hover-lift cursor-pointer" style={{animationDelay: '1.5s'}}>
+          <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-border/50 animate-float hover-lift cursor-pointer" style={{animationDelay: '1.5s'}}>
             <div className="flex items-center space-x-3">
               <Award className="h-5 w-5 text-yellow-500 animate-pulse" />
-              <span className="text-sm text-gray-600">Award winning platform</span>
+              <span className="text-sm text-muted-foreground">Award winning platform</span>
             </div>
           </div>
         </div>
 
         {/* Mobile Floating Elements */}
         <div className="absolute bottom-32 right-4 lg:hidden">
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-gray-200/50 animate-float" style={{animationDelay: '0.8s'}}>
+          <div className="bg-card/90 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-border/50 animate-float" style={{animationDelay: '0.8s'}}>
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-              <span className="text-xs text-gray-600">Trusted Platform</span>
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+              <span className="text-xs text-muted-foreground">Trusted Platform</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-white border-b border-gray-100">
+      <section className="py-20 bg-background border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center group cursor-pointer">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl mb-4 group-hover:scale-110 transition-transform">
-                  <div className="text-blue-600 group-hover:text-purple-600 transition-colors">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-muted/50 to-muted/30 rounded-2xl mb-4 group-hover:scale-110 transition-transform">
+                  <div className="text-primary group-hover:text-primary transition-colors">
                     {stat.icon}
                   </div>
                 </div>
-                <div className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
+                <div className="text-3xl lg:text-4xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {stat.number}
                 </div>
-                <div className="text-gray-600 font-medium">
+                <div className="text-muted-foreground font-medium">
                   {stat.label}
                 </div>
               </div>
@@ -302,16 +302,16 @@ const LandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-24 bg-gradient-to-br from-gray-50 to-blue-50/30">
+      <section id="features" className="py-24 bg-gradient-to-br from-muted/30 to-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
               Built for{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
                 Everyone
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               From individual travelers to major airlines, our platform scales to meet your needs with enterprise-grade features and consumer-friendly design.
             </p>
           </div>
@@ -320,7 +320,7 @@ const LandingPage = () => {
             {features.map((feature, index) => (
               <div 
                 key={index} 
-                className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
+                className="group relative bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-border"
               >
                 {/* Gradient Background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-500`}></div>
@@ -331,17 +331,17 @@ const LandingPage = () => {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors">
+                <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-muted-foreground mb-6 leading-relaxed">
                   {feature.description}
                 </p>
 
                 {/* Benefits List */}
                 <ul className="space-y-3">
                   {feature.benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-center text-sm text-gray-600">
+                    <li key={i} className="flex items-center text-sm text-muted-foreground">
                       <CheckCircle className="h-4 w-4 text-green-500 mr-3 flex-shrink-0" />
                       {benefit}
                     </li>
@@ -349,8 +349,8 @@ const LandingPage = () => {
                 </ul>
 
                 {/* Learn More Button */}
-                <div className="mt-6 pt-6 border-t border-gray-100">
-                  <button className="inline-flex items-center text-blue-600 hover:text-purple-600 font-medium group-hover:translate-x-2 transition-all">
+                <div className="mt-6 pt-6 border-t border-border">
+                  <button className="inline-flex items-center text-primary hover:text-primary font-medium group-hover:translate-x-2 transition-all">
                     Learn More
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </button>
@@ -362,13 +362,13 @@ const LandingPage = () => {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
               How It Works
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Getting started is simple. Choose your path and let us guide you through the process.
             </p>
           </div>
@@ -377,11 +377,11 @@ const LandingPage = () => {
             {/* For Travelers */}
             <div className="space-y-8">
               <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary rounded-2xl mb-4">
                   <Users className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">For Travelers</h3>
-                <p className="text-gray-600">Find and book your perfect flight in minutes</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2">For Travelers</h3>
+                <p className="text-muted-foreground">Find and book your perfect flight in minutes</p>
               </div>
 
               <div className="space-y-6">
@@ -392,12 +392,12 @@ const LandingPage = () => {
                   { step: 4, title: "Travel Easy", desc: "Get your e-ticket and enjoy 24/7 support during your journey" }
                 ].map((item, index) => (
                   <div key={index} className="flex items-start space-x-4 group">
-                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full flex items-center justify-center text-white font-bold group-hover:scale-110 transition-transform">
+                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-primary to-primary rounded-full flex items-center justify-center text-white font-bold group-hover:scale-110 transition-transform">
                       {item.step}
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">{item.title}</h4>
-                      <p className="text-gray-600 text-sm">{item.desc}</p>
+                      <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">{item.title}</h4>
+                      <p className="text-muted-foreground text-sm">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -407,11 +407,11 @@ const LandingPage = () => {
             {/* For Airlines */}
             <div className="space-y-8">
               <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-400 rounded-2xl mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary rounded-2xl mb-4">
                   <Plane className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">For Airlines</h3>
-                <p className="text-gray-600">Join our platform and reach millions of travelers</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2">For Airlines</h3>
+                <p className="text-muted-foreground">Join our platform and reach millions of travelers</p>
               </div>
 
               <div className="space-y-6">
@@ -422,12 +422,12 @@ const LandingPage = () => {
                   { step: 4, title: "Grow Revenue", desc: "Use our analytics to optimize pricing and increase bookings" }
                 ].map((item, index) => (
                   <div key={index} className="flex items-start space-x-4 group">
-                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-400 rounded-full flex items-center justify-center text-white font-bold group-hover:scale-110 transition-transform">
+                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-primary to-primary rounded-full flex items-center justify-center text-white font-bold group-hover:scale-110 transition-transform">
                       {item.step}
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1 group-hover:text-purple-600 transition-colors">{item.title}</h4>
-                      <p className="text-gray-600 text-sm">{item.desc}</p>
+                      <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">{item.title}</h4>
+                      <p className="text-muted-foreground text-sm">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -438,7 +438,7 @@ const LandingPage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-24 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
+      <section id="testimonials" className="py-24 bg-gradient-to-br from-muted to-muted/80 text-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
@@ -447,7 +447,7 @@ const LandingPage = () => {
                 Thousands
               </span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               See what our customers have to say about their experience with our platform.
             </p>
           </div>
@@ -456,7 +456,7 @@ const LandingPage = () => {
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index} 
-                className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2 border border-white/20"
+                className="bg-card/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-card/20 transition-all duration-300 transform hover:-translate-y-2 border border-border/20"
               >
                 {/* Stars */}
                 <div className="flex mb-4">
@@ -466,7 +466,7 @@ const LandingPage = () => {
                 </div>
 
                 {/* Content */}
-                <p className="text-gray-100 mb-6 leading-relaxed italic">
+                <p className="text-foreground mb-6 leading-relaxed italic">
                   "{testimonial.content}"
                 </p>
 
@@ -476,10 +476,10 @@ const LandingPage = () => {
                     {testimonial.avatar}
                   </div>
                   <div>
-                    <div className="font-semibold text-white">
+                    <div className="font-semibold text-foreground">
                       {testimonial.name}
                     </div>
-                    <div className="text-gray-300 text-sm">
+                    <div className="text-muted-foreground text-sm">
                       {testimonial.role} • {testimonial.company}
                     </div>
                   </div>
@@ -491,16 +491,16 @@ const LandingPage = () => {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-gray-50">
+      <section id="pricing" className="py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
               Simple{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
                 Transparent Pricing
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Choose the plan that works best for your airline. No hidden fees, no surprises.
             </p>
           </div>
@@ -508,17 +508,17 @@ const LandingPage = () => {
           {/* Traveler Pricing - Free */}
           <div className="mb-16">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">For Travelers</h3>
-              <p className="text-gray-600">Always free to search and book flights</p>
+              <h3 className="text-2xl font-bold text-foreground mb-2">For Travelers</h3>
+              <p className="text-muted-foreground">Always free to search and book flights</p>
             </div>
             <div className="max-w-lg mx-auto">
-              <div className="bg-white rounded-3xl p-8 shadow-lg border-2 border-green-200 relative overflow-hidden">
+              <div className="bg-card rounded-3xl p-8 shadow-lg border-2 border-green-200 relative overflow-hidden">
                 <div className="absolute top-0 right-0 bg-green-500 text-white px-4 py-1 rounded-bl-2xl text-sm font-medium">
                   FREE
                 </div>
                 <div className="text-center mb-6">
-                  <div className="text-5xl font-bold text-gray-900 mb-2">$0</div>
-                  <div className="text-gray-500">Forever free</div>
+                  <div className="text-5xl font-bold text-foreground mb-2">$0</div>
+                  <div className="text-muted-foreground">Forever free</div>
                 </div>
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-center">
@@ -556,51 +556,51 @@ const LandingPage = () => {
           {/* Airline Pricing Plans */}
           <div>
             <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">For Airlines</h3>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <h3 className="text-3xl font-bold text-foreground mb-4">For Airlines</h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
                 Flexible pricing plans designed to grow with your airline business. Choose between our commission-based model or fixed monthly plans.
               </p>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Starter Plan */}
-              <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border border-gray-200">
+              <div className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border border-border">
                 <div className="text-center mb-8">
-                  <h4 className="text-xl font-bold text-gray-900 mb-2">Starter</h4>
-                  <p className="text-gray-500 mb-4">Perfect for regional airlines</p>
+                  <h4 className="text-xl font-bold text-foreground mb-2">Starter</h4>
+                  <p className="text-muted-foreground mb-4">Perfect for regional airlines</p>
                   <div className="flex items-baseline justify-center">
-                    <span className="text-4xl font-bold text-blue-600">2.5%</span>
-                    <span className="text-gray-500 ml-2">commission</span>
+                    <span className="text-4xl font-bold text-primary">2.5%</span>
+                    <span className="text-muted-foreground ml-2">commission</span>
                   </div>
-                  <div className="text-sm text-gray-400 mt-2">+ $99/month base fee</div>
+                  <div className="text-sm text-muted-foreground mt-2">+ $99/month base fee</div>
                 </div>
 
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-blue-500 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
                     <span>Up to 50 flights management</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-blue-500 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
                     <span>Basic analytics dashboard</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-blue-500 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
                     <span>Email support</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-blue-500 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
                     <span>Standard booking management</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-blue-500 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
                     <span>Mobile app integration</span>
                   </li>
                 </ul>
 
                 <Button 
                   variant="outline" 
-                  className="w-full border-blue-500 text-blue-600 hover:bg-blue-50"
+                  className="w-full border-primary text-primary hover:bg-muted"
                   onClick={() => navigate('/airline/register?plan=starter')}
                 >
                   Start Free Trial
@@ -608,52 +608,52 @@ const LandingPage = () => {
               </div>
 
               {/* Professional Plan - Most Popular */}
-              <div className="bg-white rounded-3xl p-8 shadow-2xl border-2 border-purple-500 relative transform scale-105">
+              <div className="bg-card rounded-3xl p-8 shadow-2xl border-2 border-primary relative transform scale-105">
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-medium">
+                  <div className="bg-gradient-to-r from-primary to-primary text-primary-foreground px-6 py-2 rounded-full text-sm font-medium">
                     MOST POPULAR
                   </div>
                 </div>
 
                 <div className="text-center mb-8 pt-4">
-                  <h4 className="text-xl font-bold text-gray-900 mb-2">Professional</h4>
-                  <p className="text-gray-500 mb-4">Best for growing airlines</p>
+                  <h4 className="text-xl font-bold text-foreground mb-2">Professional</h4>
+                  <p className="text-muted-foreground mb-4">Best for growing airlines</p>
                   <div className="flex items-baseline justify-center">
-                    <span className="text-4xl font-bold text-purple-600">2.0%</span>
-                    <span className="text-gray-500 ml-2">commission</span>
+                    <span className="text-4xl font-bold text-primary">2.0%</span>
+                    <span className="text-muted-foreground ml-2">commission</span>
                   </div>
-                  <div className="text-sm text-gray-400 mt-2">+ $299/month base fee</div>
+                  <div className="text-sm text-muted-foreground mt-2">+ $299/month base fee</div>
                 </div>
 
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-purple-500 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
                     <span>Unlimited flights management</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-purple-500 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
                     <span>Advanced analytics & reports</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-purple-500 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
                     <span>Priority phone support</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-purple-500 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
                     <span>Revenue optimization tools</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-purple-500 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
                     <span>Custom branding options</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-purple-500 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
                     <span>API access</span>
                   </li>
                 </ul>
 
                 <Button 
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                  className="w-full bg-gradient-to-r from-primary to-primary hover:from-primary/90 hover:to-primary/90 text-primary-foreground"
                   onClick={() => navigate('/airline/register?plan=professional')}
                 >
                   Get Started
@@ -662,47 +662,47 @@ const LandingPage = () => {
               </div>
 
               {/* Enterprise Plan */}
-              <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border border-gray-200">
+              <div className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border border-border">
                 <div className="text-center mb-8">
-                  <h4 className="text-xl font-bold text-gray-900 mb-2">Enterprise</h4>
-                  <p className="text-gray-500 mb-4">For major airlines</p>
+                  <h4 className="text-xl font-bold text-foreground mb-2">Enterprise</h4>
+                  <p className="text-muted-foreground mb-4">For major airlines</p>
                   <div className="flex items-baseline justify-center">
-                    <span className="text-4xl font-bold text-gray-900">1.5%</span>
-                    <span className="text-gray-500 ml-2">commission</span>
+                    <span className="text-4xl font-bold text-foreground">1.5%</span>
+                    <span className="text-muted-foreground ml-2">commission</span>
                   </div>
-                  <div className="text-sm text-gray-400 mt-2">+ Custom base fee</div>
+                  <div className="text-sm text-muted-foreground mt-2">+ Custom base fee</div>
                 </div>
 
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-gray-700 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-muted-foreground mr-3 flex-shrink-0" />
                     <span>Everything in Professional</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-gray-700 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-muted-foreground mr-3 flex-shrink-0" />
                     <span>Dedicated account manager</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-gray-700 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-muted-foreground mr-3 flex-shrink-0" />
                     <span>Custom integrations</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-gray-700 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-muted-foreground mr-3 flex-shrink-0" />
                     <span>White-label solutions</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-gray-700 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-muted-foreground mr-3 flex-shrink-0" />
                     <span>99.9% SLA guarantee</span>
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-gray-700 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-muted-foreground mr-3 flex-shrink-0" />
                     <span>Custom reporting</span>
                   </li>
                 </ul>
 
                 <Button 
                   variant="outline" 
-                  className="w-full border-gray-700 text-gray-700 hover:bg-gray-50"
+                  className="w-full border-border text-foreground hover:bg-muted"
                   onClick={() => navigate('/airline/contact-sales')}
                 >
                   Contact Sales
@@ -712,30 +712,30 @@ const LandingPage = () => {
 
             {/* Additional Information */}
             <div className="mt-16 text-center">
-              <div className="bg-blue-50 rounded-3xl p-8 border border-blue-200">
-                <h4 className="text-xl font-bold text-gray-900 mb-4">How Our Pricing Works</h4>
+              <div className="bg-muted/30 rounded-3xl p-8 border border-border">
+                <h4 className="text-xl font-bold text-foreground mb-4">How Our Pricing Works</h4>
                 <div className="grid md:grid-cols-2 gap-8 text-left">
                   <div>
-                    <h5 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <TrendingUp className="h-5 w-5 text-blue-600 mr-2" />
+                    <h5 className="font-semibold text-foreground mb-2 flex items-center">
+                      <TrendingUp className="h-5 w-5 text-primary mr-2" />
                       Commission Structure
                     </h5>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       Pay only when you make sales. Our commission is calculated on the net fare amount, helping you maintain healthy profit margins while growing your reach.
                     </p>
                   </div>
                   <div>
-                    <h5 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <Shield className="h-5 w-5 text-blue-600 mr-2" />
+                    <h5 className="font-semibold text-foreground mb-2 flex items-center">
+                      <Shield className="h-5 w-5 text-primary mr-2" />
                       Monthly Base Fee
                     </h5>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       The base fee covers platform maintenance, customer support, and core features. It's a small investment that ensures reliable service and continuous platform improvements.
                     </p>
                   </div>
                 </div>
-                <div className="mt-6 pt-6 border-t border-blue-200">
-                  <p className="text-sm text-gray-500">
+                <div className="mt-6 pt-6 border-t border-border">
+                  <p className="text-sm text-muted-foreground">
                     <strong>Example:</strong> If you sell $100,000 in tickets per month on the Professional plan, you'd pay $299 (base) + $2,000 (2% commission) = $2,299 total.
                   </p>
                 </div>
@@ -746,7 +746,7 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 text-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-r from-primary via-primary to-primary text-primary-foreground relative overflow-hidden">
         {/* Background Pattern */}
    <div
   className="absolute top-0 left-0 w-full h-full opacity-10"
@@ -762,14 +762,14 @@ const LandingPage = () => {
             <h2 className="text-4xl lg:text-6xl font-bold leading-tight">
               Ready to Take Off?
             </h2>
-            <p className="text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl lg:text-2xl text-primary-foreground/90 max-w-3xl mx-auto leading-relaxed">
               Join thousands of satisfied customers who have transformed their travel and business experience with our platform.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
               <Button 
                 size="lg" 
-                className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                className="bg-background text-primary hover:bg-muted px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
                 onClick={() => navigate('/traveler')}
               >
                 <Users className="h-5 w-5 mr-2" />
@@ -780,7 +780,7 @@ const LandingPage = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg font-semibold rounded-xl transition-all transform hover:scale-105"
+                className="border-2 border-background text-background hover:bg-background hover:text-primary px-8 py-4 text-lg font-semibold rounded-xl transition-all transform hover:scale-105"
                 onClick={() => navigate('/airline/register')}
               >
                 <Plane className="h-5 w-5 mr-2" />
@@ -788,7 +788,7 @@ const LandingPage = () => {
               </Button>
             </div>
 
-            <div className="pt-8 text-white/80">
+            <div className="pt-8 text-primary-foreground/80">
               <p className="text-sm">
                 🚀 Special Launch Offer: Get 20% off your first booking or free setup for airlines!
               </p>
@@ -798,60 +798,60 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-16">
+      <footer className="bg-muted text-muted-foreground py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <div>
-              <h3 className="text-white font-semibold mb-4">For Travelers</h3>
+              <h3 className="text-foreground font-semibold mb-4">For Travelers</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="/flights" className="hover:text-white transition-colors">Search Flights</a></li>
-                <li><a href="/bookings" className="hover:text-white transition-colors">My Bookings</a></li>
-                <li><a href="/travel-guides" className="hover:text-white transition-colors">Travel Guides</a></li>
-                <li><a href="/mobile-app" className="hover:text-white transition-colors">Mobile App</a></li>
+                <li><a href="/flights" className="hover:text-foreground transition-colors">Search Flights</a></li>
+                <li><a href="/bookings" className="hover:text-foreground transition-colors">My Bookings</a></li>
+                <li><a href="/travel-guides" className="hover:text-foreground transition-colors">Travel Guides</a></li>
+                <li><a href="/mobile-app" className="hover:text-foreground transition-colors">Mobile App</a></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-white font-semibold mb-4">For Airlines</h3>
+              <h3 className="text-foreground font-semibold mb-4">For Airlines</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="/airline/register" className="hover:text-white transition-colors">Join Platform</a></li>
-                <li><a href="/airline/dashboard" className="hover:text-white transition-colors">Dashboard</a></li>
-                <li><a href="/airline/analytics" className="hover:text-white transition-colors">Analytics</a></li>
-                <li><a href="/airline/support" className="hover:text-white transition-colors">Support</a></li>
+                <li><a href="/airline/register" className="hover:text-foreground transition-colors">Join Platform</a></li>
+                <li><a href="/airline/dashboard" className="hover:text-foreground transition-colors">Dashboard</a></li>
+                <li><a href="/airline/analytics" className="hover:text-foreground transition-colors">Analytics</a></li>
+                <li><a href="/airline/support" className="hover:text-foreground transition-colors">Support</a></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-white font-semibold mb-4">Company</h3>
+              <h3 className="text-foreground font-semibold mb-4">Company</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="/about" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="/careers" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="/press" className="hover:text-white transition-colors">Press</a></li>
-                <li><a href="/contact" className="hover:text-white transition-colors">Contact</a></li>
+                <li><a href="/about" className="hover:text-foreground transition-colors">About Us</a></li>
+                <li><a href="/careers" className="hover:text-foreground transition-colors">Careers</a></li>
+                <li><a href="/press" className="hover:text-foreground transition-colors">Press</a></li>
+                <li><a href="/contact" className="hover:text-foreground transition-colors">Contact</a></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-white font-semibold mb-4">Support</h3>
+              <h3 className="text-foreground font-semibold mb-4">Support</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="/help" className="hover:text-white transition-colors">Help Center</a></li>
-                <li><a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="/terms" className="hover:text-white transition-colors">Terms of Service</a></li>
-                <li><a href="/security" className="hover:text-white transition-colors">Security</a></li>
+                <li><a href="/help" className="hover:text-foreground transition-colors">Help Center</a></li>
+                <li><a href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</a></li>
+                <li><a href="/terms" className="hover:text-foreground transition-colors">Terms of Service</a></li>
+                <li><a href="/security" className="hover:text-foreground transition-colors">Security</a></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-gray-800 pt-8">
+          <div className="border-t border-border pt-8">
             <div className="flex flex-col lg:flex-row justify-between items-center">
               <div className="flex items-center space-x-2 mb-4 lg:mb-0">
-                <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
-                  <Plane className="h-5 w-5 text-white" />
+                <div className="p-2 bg-gradient-to-r from-primary to-primary rounded-lg">
+                  <Plane className="h-5 w-5 text-primary-foreground" />
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
                   AirlinePro
                 </span>
               </div>
               <div className="text-sm text-center lg:text-right">
                 <p>&copy; 2024 AirlinePro. All rights reserved.</p>
-                <p className="text-gray-500 mt-1">Making travel accessible for everyone.</p>
+                <p className="text-muted-foreground mt-1">Making travel accessible for everyone.</p>
               </div>
             </div>
           </div>

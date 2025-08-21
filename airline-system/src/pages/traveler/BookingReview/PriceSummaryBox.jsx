@@ -138,7 +138,7 @@ const PriceSummaryBox = ({
     return appliedCoupon.discount
   }
 
-  const PriceLineItem = ({ icon: Icon, label, amount, color = "text-gray-700", iconColor = "text-muted-foreground" }) => (
+  const PriceLineItem = ({ icon: Icon, label, amount, color = "text-foreground", iconColor = "text-muted-foreground" }) => (
     <div className="flex items-center justify-between py-2">
       <div className="flex items-center gap-2">
         {Icon && <Icon className={cn("w-4 h-4", iconColor)} />}
@@ -154,21 +154,21 @@ const PriceSummaryBox = ({
     <Card className="sticky top-24 h-fit">
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2">
-          <Receipt className="h-5 w-5 text-blue-600" />
+          <Receipt className="h-5 w-5 text-primary" />
           <span>Price Summary</span>
         </CardTitle>
       </CardHeader>
       
       <CardContent className="space-y-4">
         {/* Flight Details Summary */}
-        <div className="bg-blue-50 rounded-lg p-3">
+        <div className="bg-muted/30 rounded-lg p-3">
           <div className="flex items-center gap-2 mb-2">
-            <Plane className="w-4 h-4 text-blue-600" />
-            <span className="text-sm font-medium text-blue-900">
+            <Plane className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-foreground">
               {searchData.from} → {searchData.to}
             </span>
           </div>
-          <div className="text-xs text-blue-700 space-y-1">
+          <div className="text-xs text-muted-foreground space-y-1">
             <p>{flight.airlineName} • {flight.flightNumber}</p>
             <p>{searchData.passengers} passenger{searchData.passengers > 1 ? 's' : ''} • {bookingData.selectedFare === "premium" ? "Premium" : "Regular"}</p>
             {bookingData.insurance && (
@@ -186,7 +186,7 @@ const PriceSummaryBox = ({
           onClick={() => setShowBreakdown(!showBreakdown)}
           className="w-full justify-between p-0 h-auto font-normal"
         >
-          <span className="text-sm text-gray-700">Price Breakdown</span>
+          <span className="text-sm text-foreground">Price Breakdown</span>
           {showBreakdown ? 
             <ChevronUp className="w-4 h-4" /> : 
             <ChevronDown className="w-4 h-4" />
@@ -201,7 +201,7 @@ const PriceSummaryBox = ({
               icon={Plane}
               label={`Base fare (${searchData.passengers} × ₹${flight.price.toLocaleString()})`}
               amount={flight.price * searchData.passengers}
-              iconColor="text-blue-600"
+              iconColor="text-primary"
             />
 
             {/* Fare Upgrade */}
@@ -237,7 +237,7 @@ const PriceSummaryBox = ({
                 icon={MapPin}
                 label={`Seat selection (${Object.keys(bookingData.seats).length} seats)`}
                 amount={Object.keys(bookingData.seats).length * 600}
-                iconColor="text-blue-600"
+                iconColor="text-primary"
               />
             )}
 
@@ -255,7 +255,7 @@ const PriceSummaryBox = ({
                 icon={Luggage}
                 label="Extra baggage"
                 amount={1200}
-                iconColor="text-blue-600"
+                iconColor="text-primary"
               />
             )}
 
@@ -297,7 +297,7 @@ const PriceSummaryBox = ({
 
             {/* Discount */}
             {appliedCoupon && (
-              <div className="pt-2 border-t border-gray-200">
+              <div className="pt-2 border-t border-border">
                 <PriceLineItem
                   icon={Gift}
                   label={`Discount (${appliedCoupon.code})`}
@@ -324,7 +324,7 @@ const PriceSummaryBox = ({
                 <Button 
                   variant="outline" 
                   onClick={applyCoupon}
-                  className="px-4 text-blue-600 border-blue-200 hover:bg-blue-50"
+                  className="px-4 text-primary border-blue-200 hover:bg-blue-50"
                 >
                   Apply
                 </Button>
@@ -371,7 +371,7 @@ const PriceSummaryBox = ({
         </div>
 
         {/* Total */}
-        <div className="border-t border-gray-200 pt-4">
+        <div className="border-t border-border pt-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-lg font-bold text-foreground">Total Amount</p>
@@ -431,7 +431,7 @@ const PriceSummaryBox = ({
         </div>
 
         {/* Payment Methods Preview */}
-        <div className="border-t border-gray-200 pt-3">
+        <div className="border-t border-border pt-3">
           <p className="text-xs text-muted-foreground mb-2">Accepted payment methods:</p>
           <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
             <span>💳 Credit Card</span>

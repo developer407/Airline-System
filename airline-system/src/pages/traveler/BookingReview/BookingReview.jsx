@@ -330,18 +330,18 @@ const BookingReview = () => {
       </div>
 
       {/* Mobile Sticky Bottom Bar */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 z-40">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-border p-4 z-40">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-lg font-bold text-gray-900">
+            <p className="text-lg font-bold text-foreground">
               ₹{calculateTotalPrice().toLocaleString()}
             </p>
-            <p className="text-xs text-gray-500">Total Amount</p>
+            <p className="text-xs text-muted-foreground">Total Amount</p>
           </div>
           <Button
             onClick={handleProceedToPayment}
             disabled={isLoading || Object.keys(validationErrors).length > 0}
-            className="px-8 py-3 bg-blue-600 hover:bg-blue-700"
+            className="px-8 py-3 bg-primary hover:bg-primary/90"
           >
             {isLoading ? (
               <>

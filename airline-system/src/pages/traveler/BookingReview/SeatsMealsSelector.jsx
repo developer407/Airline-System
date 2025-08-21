@@ -186,10 +186,10 @@ const SeatsMealsSelector = ({
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {travelers.map((traveler) => (
-                <div key={traveler.id} className="bg-gray-50 p-4 rounded-lg border border-gray-200 flex justify-between items-center">
+                <div key={traveler.id} className="bg-muted/50 p-4 rounded-lg border border-gray-200 flex justify-between items-center">
                   <div>
                     <p className="font-semibold text-gray-800">{traveler.firstName} {traveler.lastName}</p>
-                    <p className="text-sm text-gray-500">{traveler.type}</p>
+                    <p className="text-sm text-muted-foreground">{traveler.type}</p>
                   </div>
                   <Button
                     variant={selectedSeats[traveler.id] ? "outline" : "default"}
@@ -241,8 +241,8 @@ const SeatsMealsSelector = ({
                           className={cn(
                             "border-2 rounded-lg p-3 cursor-pointer transition-all block",
                             selectedMeals[traveler.id] === meal.id
-                              ? "border-blue-500 bg-blue-50" 
-                              : "border-gray-200 hover:border-blue-300 hover:bg-blue-25"
+                              ? "border-primary bg-primary/10" 
+                              : "border-border hover:border-primary/50 hover:bg-primary/5"
                           )}
                         >
                           <div className="flex items-start justify-between">
@@ -311,12 +311,12 @@ const SeatsMealsSelector = ({
               ))}
             </div>
 
-            <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
+            <div className="bg-muted/30 border border-border rounded-lg p-3">
               <div className="flex items-start gap-2">
                 <Info className="h-4 w-4 text-amber-600 mt-0.5" />
                 <div className="text-sm">
-                  <p className="font-medium text-amber-900">Special Assistance Note</p>
-                  <p className="text-amber-800 mt-1">
+                  <p className="font-medium text-foreground">Special Assistance Note</p>
+                  <p className="text-muted-foreground mt-1">
                     Special assistance requests are subject to airline approval and availability. 
                     Please contact the airline directly for complex medical requirements.
                   </p>

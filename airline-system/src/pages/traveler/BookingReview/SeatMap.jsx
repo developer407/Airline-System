@@ -24,7 +24,7 @@ const Seat = ({ seatNumber, status, isSelected, onSelect, price, isDisabled }) =
         {seatNumber}
       </Button>
       {price > 0 && (
-        <span className="text-[10px] text-gray-500 mt-1">
+        <span className="text-[10px] text-muted-foreground mt-1">
           ₹{price}
         </span>
       )}
@@ -44,21 +44,21 @@ const SeatMap = ({
   
   return (
     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
-      <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[95vh] flex flex-col">
+      <div className="bg-card rounded-2xl shadow-2xl w-full max-w-4xl max-h-[95vh] flex flex-col">
         {/* Header */}
-        <div className="flex justify-between items-center p-4 border-b border-gray-200">
+        <div className="flex justify-between items-center p-4 border-b border-border">
           <div>
-            <h2 className="text-xl font-bold text-gray-800">Select Your Seat</h2>
-            <p className="text-sm text-gray-600">
-              Choosing for: <span className="font-semibold text-blue-600">{selectedTravelerName}</span>
-            </p>
+                            <h2 className="text-xl font-bold text-foreground">Select Your Seat</h2>
+                <p className="text-sm text-muted-foreground">
+                  Choosing for: <span className="font-semibold text-primary">{selectedTravelerName}</span>
+                </p>
           </div>
-          <button
-            onClick={onClose}
-            className="p-2 rounded-full hover:bg-gray-200 transition-colors"
-          >
-            <X className="w-5 h-5 text-gray-600" />
-          </button>
+                      <button
+              onClick={onClose}
+              className="p-2 rounded-full hover:bg-muted transition-colors"
+            >
+              <X className="w-5 h-5 text-muted-foreground" />
+            </button>
         </div>
 
         {/* Main Content */}
@@ -66,20 +66,20 @@ const SeatMap = ({
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Seat Map */}
             <div className="flex-grow">
-              <div className="bg-white rounded-xl shadow-inner p-6 border border-gray-200">
+              <div className="bg-background rounded-xl shadow-inner p-6 border border-border">
                 {/* Aircraft Body */}
                 <div className="relative">
-                  <div className="absolute inset-x-0 top-1/2 h-1/2 bg-gray-100 rounded-full" />
+                  <div className="absolute inset-x-0 top-1/2 h-1/2 bg-muted rounded-full" />
                   <div className="relative space-y-3">
                     {seatMapData.sections.map((section) => (
                       <div key={section.name}>
                         <div className="text-center my-4">
-                          <p className="font-semibold text-gray-700">{section.name}</p>
+                          <p className="font-semibold text-foreground">{section.name}</p>
                         </div>
                         <div className="space-y-2">
                           {section.rows.map((row) => (
                             <div key={row} className="flex items-center justify-center gap-2">
-                              <span className="w-6 text-sm font-semibold text-gray-500">{row}</span>
+                              <span className="w-6 text-sm font-semibold text-muted-foreground">{row}</span>
                               <div className="flex-grow grid grid-cols-7 gap-x-2 gap-y-1">
                                 {['A', 'B', 'C', 'X', 'D', 'E', 'F'].map((col, idx) => {
                                   if (col === 'X') {
@@ -119,35 +119,35 @@ const SeatMap = ({
             {/* Legend & Summary */}
             <div className="w-full lg:w-64 flex-shrink-0">
               <div className="sticky top-0 space-y-6">
-                <div className="bg-white p-4 rounded-xl border border-gray-200">
-                  <h3 className="font-semibold text-gray-800 mb-3">Legend</h3>
+                <div className="bg-card p-4 rounded-xl border border-border">
+                  <h3 className="font-semibold text-foreground mb-3">Legend</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-md border-2 border-gray-300 bg-white" />
-                      <span className="text-gray-600">Available</span>
+                      <div className="w-5 h-5 rounded-md border-2 border-border bg-background" />
+                      <span className="text-muted-foreground">Available</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-md border-2 border-blue-800 bg-blue-600" />
-                      <span className="text-gray-600">Your Selection</span>
+                      <div className="w-5 h-5 rounded-md border-2 border-primary bg-primary" />
+                      <span className="text-muted-foreground">Your Selection</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-md border-2 border-gray-400 bg-gray-300" />
-                      <span className="text-gray-600">Occupied</span>
+                      <div className="w-5 h-5 rounded-md border-2 border-muted bg-muted" />
+                      <span className="text-muted-foreground">Occupied</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-5 h-5 rounded-md border-2 border-yellow-400 bg-yellow-200" />
-                      <span className="text-gray-600">Extra Legroom</span>
+                      <span className="text-muted-foreground">Extra Legroom</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl border border-gray-200">
-                  <h3 className="font-semibold text-gray-800 mb-3">Your Selections</h3>
+                <div className="bg-card p-4 rounded-xl border border-border">
+                  <h3 className="font-semibold text-foreground mb-3">Your Selections</h3>
                   <div className="space-y-2">
                     {travelers.map((traveler) => (
                       <div key={traveler.id} className="flex justify-between items-center text-sm">
-                        <span className="text-gray-600">{traveler.firstName}</span>
-                        <span className="font-semibold text-blue-600">
+                        <span className="text-muted-foreground">{traveler.firstName}</span>
+                        <span className="font-semibold text-primary">
                           {selectedSeats[traveler.id] || "Not Selected"}
                         </span>
                       </div>
@@ -160,7 +160,7 @@ const SeatMap = ({
         </div>
 
         {/* Footer */}
-        <div className="p-4 bg-white/50 border-t border-gray-200 rounded-b-2xl">
+        <div className="p-4 bg-card/50 border-t border-border rounded-b-2xl">
           <Button
             onClick={onClose}
             className="w-full "

@@ -79,7 +79,7 @@ const SortingBar = ({
   }
 
   return (
-    <div className={cn("bg-white border-b border-gray-100 sticky top-20 z-30", className)}>
+    <div className={cn("bg-background border-b border-border sticky top-20 z-30", className)}>
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4">
         {/* Results Count */}
         <div className="flex items-center gap-2">
@@ -91,7 +91,7 @@ const SortingBar = ({
 
         {/* Sort Options */}
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-sm font-medium text-gray-700 mr-2">Sort by:</span>
+          <span className="text-sm font-medium text-foreground mr-2">Sort by:</span>
           
           {/* Desktop Sort Buttons */}
           <div className="hidden md:flex items-center gap-1">
@@ -107,7 +107,7 @@ const SortingBar = ({
                   onClick={() => handleSortChange(option.value)}
                   className={cn(
                     "flex items-center gap-1 text-xs font-medium transition-all duration-200",
-                    isActive && "bg-blue-600 text-white hover:bg-blue-700",
+                    isActive && "bg-primary text-primary-foreground hover:bg-primary/90",
                     !isActive && "text-muted-foreground hover:text-foreground hover:bg-muted"
                   )}
                 >
@@ -128,7 +128,7 @@ const SortingBar = ({
             <select
               value={sortBy}
               onChange={(e) => onSortChange?.(e.target.value)}
-              className="text-xs border border-gray-300 rounded-md px-2 py-1 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="text-xs border border-border rounded-md px-2 py-1 focus:ring-2 focus:ring-primary focus:border-primary"
             >
               {sortOptions.map((option) => (
                 <option key={option.value} value={option.value}>
@@ -152,14 +152,14 @@ const SortingBar = ({
           </div>
 
           {/* View Mode Toggle */}
-          <div className="flex items-center border border-gray-200 rounded-md ml-4">
+          <div className="flex items-center border border-border rounded-md ml-4">
             <Button
               variant={viewMode === "list" ? "default" : "ghost"}
               size="sm"
               onClick={() => onViewModeChange?.("list")}
               className={cn(
                 "rounded-r-none px-2 py-1",
-                viewMode === "list" && "bg-blue-600 text-white hover:bg-blue-700"
+                viewMode === "list" && "bg-primary text-primary-foreground hover:bg-primary/90"
               )}
             >
               <List className="h-4 w-4" />
@@ -170,7 +170,7 @@ const SortingBar = ({
               onClick={() => onViewModeChange?.("grid")}
               className={cn(
                 "rounded-l-none px-2 py-1",
-                viewMode === "grid" && "bg-blue-600 text-white hover:bg-blue-700"
+                viewMode === "grid" && "bg-primary text-primary-foreground hover:bg-primary/90"
               )}
             >
               <Grid3X3 className="h-4 w-4" />

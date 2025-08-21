@@ -120,9 +120,9 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
       className={cn(
         "relative border-2 rounded-lg p-4 transition-all duration-200",
         isSelected 
-          ? "border-blue-500 bg-blue-50 shadow-md" 
-          : "border-gray-200 hover:border-blue-300 hover:shadow-sm",
-        addOn.luxury && "bg-gradient-to-br from-amber-50 to-orange-50"
+          ?         "border-primary bg-primary/10 shadow-md" 
+          : "border-border hover:border-primary/50 hover:shadow-sm",
+        addOn.luxury && "bg-gradient-to-br from-amber-50/20 to-orange-50/20"
       )}
     >
       {/* Popular Badge */}
@@ -154,18 +154,18 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
             <Label htmlFor={`addon-${addOn.id}`} className="flex-1 cursor-pointer">
               <div className="flex items-center gap-2">
                 <addOn.icon className={cn("w-5 h-5", addOn.color)} />
-                <h4 className="font-semibold text-gray-900">{addOn.name}</h4>
+                <h4 className="font-semibold text-foreground">{addOn.name}</h4>
               </div>
-              <p className="text-sm text-gray-600 mt-1">{addOn.description}</p>
+              <p className="text-sm text-muted-foreground mt-1">{addOn.description}</p>
             </Label>
           </div>
           
           <div className="text-right">
-            <span className="text-xl font-bold text-gray-900">
+            <span className="text-xl font-bold text-foreground">
               ₹{addOn.price.toLocaleString()}
             </span>
             {addOn.timeLimit && (
-              <p className="text-xs text-gray-500">for {addOn.timeLimit}</p>
+              <p className="text-xs text-muted-foreground">for {addOn.timeLimit}</p>
             )}
           </div>
         </div>
@@ -173,10 +173,10 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
         {/* Benefits */}
         {isSelected && addOn.benefits && (
           <div className="space-y-2 animate-in slide-in-from-top-2 fade-in duration-200">
-            <h5 className="text-sm font-medium text-gray-700">What you get:</h5>
+            <h5 className="text-sm font-medium text-foreground">What you get:</h5>
             <div className="space-y-1">
               {addOn.benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
+                <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Check className="w-3 h-3 text-green-500 flex-shrink-0" />
                   <span>{benefit}</span>
                 </div>
@@ -187,8 +187,8 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
 
         {/* Savings Highlight */}
         {addOn.savings && isSelected && (
-          <div className="bg-green-50 border border-green-200 rounded p-2">
-            <p className="text-sm font-medium text-green-800">{addOn.savings}</p>
+          <div className="bg-muted/30 border border-border rounded p-2">
+            <p className="text-sm font-medium text-foreground">{addOn.savings}</p>
           </div>
         )}
       </div>
@@ -225,17 +225,17 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
 
         {/* Lock Price Section */}
         <div className="space-y-4">
-          <div className="border-t border-gray-200 pt-6">
-            <h4 className="font-medium text-gray-900 mb-4 flex items-center gap-2">
+          <div className="border-t border-border pt-6">
+            <h4 className="font-medium text-foreground mb-4 flex items-center gap-2">
               <Lock className="h-4 w-4 text-red-600" />
               Price Protection
             </h4>
             
             <div 
               className={cn(
-                "border-2 rounded-lg p-4 transition-all duration-200 bg-gradient-to-r from-red-50 to-pink-50",
+                "border-2 rounded-lg p-4 transition-all duration-200 bg-gradient-to-r from-red-50/20 to-pink-50/20",
                 selectedAddOns.lockPrice 
-                  ? "border-red-500 bg-red-50 shadow-md" 
+                  ? "border-red-500 bg-red-50/20 shadow-md" 
                   : "border-red-200 hover:border-red-300 hover:shadow-sm"
               )}
             >
@@ -252,7 +252,7 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
                     <Label htmlFor="lockPrice" className="flex-1 cursor-pointer">
                       <div className="flex items-center gap-2">
                         <lockPriceOption.icon className={cn("w-5 h-5", lockPriceOption.color)} />
-                        <h4 className="font-semibold text-gray-900">{lockPriceOption.name}</h4>
+                        <h4 className="font-semibold text-foreground">{lockPriceOption.name}</h4>
                         <Button
                           variant="ghost"
                           size="sm"
@@ -262,18 +262,18 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
                             setShowLockPriceDetails(!showLockPriceDetails)
                           }}
                         >
-                          <Info className="w-4 h-4 text-gray-400" />
+                          <Info className="w-4 h-4 text-muted-foreground" />
                         </Button>
                       </div>
-                      <p className="text-sm text-gray-600 mt-1">{lockPriceOption.description}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{lockPriceOption.description}</p>
                     </Label>
                   </div>
                   
                   <div className="text-right">
-                    <span className="text-xl font-bold text-gray-900">
+                    <span className="text-xl font-bold text-foreground">
                       ₹{lockPriceOption.price}
                     </span>
-                    <p className="text-xs text-gray-500">for {lockPriceOption.timeLimit}</p>
+                    <p className="text-xs text-muted-foreground">for {lockPriceOption.timeLimit}</p>
                   </div>
                 </div>
 
@@ -282,7 +282,7 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
                   <div className="space-y-2 animate-in slide-in-from-top-2 fade-in duration-200">
                     <div className="space-y-1">
                       {lockPriceOption.benefits.map((benefit, index) => (
-                        <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
+                        <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
                           <Check className="w-3 h-3 text-green-500 flex-shrink-0" />
                           <span>{benefit}</span>
                         </div>
@@ -293,12 +293,12 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
 
                 {/* Countdown Timer Simulation */}
                 {selectedAddOns.lockPrice && (
-                  <div className="bg-red-100 border border-red-300 rounded p-3">
+                  <div className="bg-muted/30 border border-border rounded p-3">
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-red-600" />
                       <div>
-                        <p className="text-sm font-medium text-red-900">Price locked until:</p>
-                        <p className="text-sm text-red-800">
+                        <p className="text-sm font-medium text-foreground">Price locked until:</p>
+                        <p className="text-sm text-muted-foreground">
                           {new Date(Date.now() + 24 * 60 * 60 * 1000).toLocaleString()}
                         </p>
                       </div>
@@ -310,9 +310,9 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
 
             {/* Lock Price Details Modal */}
             {showLockPriceDetails && (
-              <div className="mt-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm animate-in slide-in-from-top-2 fade-in duration-200">
-                <h5 className="font-medium text-gray-900 mb-2">How Price Lock Works:</h5>
-                <div className="space-y-2 text-sm text-gray-600">
+              <div className="mt-4 p-4 bg-card border border-border rounded-lg shadow-sm animate-in slide-in-from-top-2 fade-in duration-200">
+                <h5 className="font-medium text-foreground mb-2">How Price Lock Works:</h5>
+                <div className="space-y-2 text-sm text-muted-foreground">
                   <div className="flex items-start gap-2">
                     <span className="text-blue-600 font-bold">1.</span>
                     <span>Pay ₹672 to lock this exact price for 24 hours</span>
@@ -331,11 +331,11 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
                   </div>
                 </div>
                 
-                <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded">
-                  <p className="text-sm font-medium text-green-900">
+                <div className="mt-3 p-3 bg-muted/30 border border-border rounded">
+                  <p className="text-sm font-medium text-foreground">
                     ✓ 100% refundable if you don't complete booking
                   </p>
-                  <p className="text-sm text-green-800">
+                  <p className="text-sm text-muted-foreground">
                     ✓ Protection against fare increases
                   </p>
                 </div>
@@ -346,9 +346,9 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
 
         {/* Summary */}
         {Object.values(selectedAddOns).some(Boolean) && (
-          <div className="border-t border-gray-200 pt-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h5 className="font-medium text-blue-900 mb-2">Selected Add-ons Summary</h5>
+          <div className="border-t border-border pt-6">
+            <div className="bg-muted/30 border border-border rounded-lg p-4">
+              <h5 className="font-medium text-foreground mb-2">Selected Add-ons Summary</h5>
               <div className="space-y-2">
                 {Object.entries(selectedAddOns).map(([key, selected]) => {
                   if (!selected) return null
@@ -360,16 +360,16 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
                     <div key={key} className="flex items-center justify-between text-sm">
                       <div className="flex items-center gap-2">
                         <addOn.icon className={cn("w-4 h-4", addOn.color)} />
-                        <span className="text-blue-800">{addOn.name}</span>
+                        <span className="text-primary">{addOn.name}</span>
                       </div>
-                      <span className="font-medium text-blue-900">₹{addOn.price.toLocaleString()}</span>
+                      <span className="font-medium text-foreground">₹{addOn.price.toLocaleString()}</span>
                     </div>
                   )
                 })}
               </div>
               
               {calculateSavings() > 0 && (
-                <div className="mt-3 pt-3 border-t border-blue-200">
+                <div className="mt-3 pt-3 border-t border-border">
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium text-green-700">You're saving:</span>
                     <span className="font-bold text-green-700">₹{calculateSavings()}</span>
@@ -382,12 +382,12 @@ const AddOnsSection = ({ selectedAddOns, onChange, flightPrice }) => {
 
         {/* Important Notes */}
         <div className="space-y-3">
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
+          <div className="bg-muted/30 border border-border rounded-lg p-3">
             <div className="flex items-start gap-2">
               <Info className="h-4 w-4 text-amber-600 mt-0.5" />
               <div className="text-sm">
-                <p className="font-medium text-amber-900">Important Information</p>
-                <ul className="text-amber-800 mt-1 space-y-1 ml-4">
+                <p className="font-medium text-foreground">Important Information</p>
+                <ul className="text-muted-foreground mt-1 space-y-1 ml-4">
                   <li>• Add-on services are subject to availability and airline policies</li>
                   <li>• Lounge access requires valid boarding pass and ID</li>
                   <li>• Priority services may not be available at all airports</li>
