@@ -41,7 +41,7 @@
 /* Base variables - light theme by default */
 :root {
   --radius: 0.65rem;
-  
+
   /* Light theme background and text */
   --background: 255 255 255; /* white */
   --foreground: 9 9 11; /* dark text */
@@ -49,11 +49,11 @@
   --card-foreground: 9 9 11;
   --popover: 255 255 255;
   --popover-foreground: 9 9 11;
-  
+
   /* Default primary - can be overridden by color themes */
   --primary: 96, 20, 65; /* magnate purple */
   --primary-foreground: 255 255 255;
-  
+
   /* Light theme UI colors */
   --secondary: 244 244 245;
   --secondary-foreground: 39 39 42;
@@ -66,7 +66,7 @@
   --border: 228 228 231;
   --input: 228 228 231;
   --ring: 59 130 246;
-  
+
   /* Sidebar */
   --sidebar: 255 255 255;
   --sidebar-foreground: 9 9 11;
@@ -89,7 +89,7 @@
 
   /* primary */
   --primary: 214, 162, 232,1.0; /* magnate purple */
-  
+
   /* Keep primary as is - can be overridden by color themes */
   --secondary: 39 39 42;
   --secondary-foreground: 250 250 250;
@@ -102,7 +102,7 @@
   --border: 39 39 42;
   --input: 39 39 42;
   --ring: 59 130 246;
-  
+
   /* Sidebar dark */
   --sidebar: 9 9 11;
   --sidebar-foreground: 250 250 250;
@@ -140,7 +140,6 @@
   --sidebar-ring: 128 0 0;
 }
 
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -148,10 +147,19 @@
   body {
     @apply bg-background text-foreground transition-colors;
   }
-  
+
   /* Dark theme gradient background */
   .dark body {
     background: linear-gradient(135deg, rgb(9 9 11), rgb(24 24 27), rgb(39 39 42));
     background-attachment: fixed;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

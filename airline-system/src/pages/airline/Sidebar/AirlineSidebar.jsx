@@ -32,6 +32,7 @@ import {
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 const AirlineSidebar = ({ activeSection, onSectionChange, isCollapsed, onToggleCollapse }) => {
   const [expandedSections, setExpandedSections] = React.useState({
@@ -166,7 +167,7 @@ const AirlineSidebar = ({ activeSection, onSectionChange, isCollapsed, onToggleC
       </div>
 
       {/* Navigation */}
-      <div className="flex-1 overflow-y-auto py-4 space-y-2">
+      <ScrollArea className="flex-1 py-4 space-y-2">
         {sidebarSections.map((section) => {
           const SectionIcon = section.icon
           const isExpanded = expandedSections[section.id]
@@ -306,7 +307,7 @@ const AirlineSidebar = ({ activeSection, onSectionChange, isCollapsed, onToggleC
             </div>
           )
         })}
-      </div>
+      </ScrollArea>
 
       {/* Footer */}
       {!isCollapsed && (

@@ -23,6 +23,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/theme-toggle"
 import FlightForm from "./FlightForm"
@@ -432,7 +433,7 @@ const AirlineDashboard = () => {
         </div>
 
         {/* Main Content */}
-        <div className="p-6">
+        <ScrollArea className="flex-1 p-6">
           {/* Render content based on active section */}
           {activeSection === "overview" && (
             <div className="space-y-6">
@@ -595,7 +596,7 @@ const AirlineDashboard = () => {
           {activeSection.includes("reports") && (
             <AnalyticsDashboard flights={flights} />
           )}
-        </div>
+        </ScrollArea>
       </div>
 
       {/* Flight Form Modal */}

@@ -28,6 +28,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/theme-toggle"
 import SuperAdminSidebar from "../Sidebar/SuperAdminSidebar"
@@ -234,7 +235,7 @@ const SuperAdminDashboard = () => {
         </div>
 
         {/* Main Content */}
-        <div className="p-6">
+        <ScrollArea className="flex-1 p-6">
           {/* Platform Overview */}
           {activeSection === "overview" && (
             <div className="space-y-6">
@@ -422,7 +423,7 @@ const SuperAdminDashboard = () => {
           {activeSection.includes("security") && (
             <SecurityCompliance activeSection={activeSection} />
           )}
-        </div>
+        </ScrollArea>
       </div>
     </div>
   )
