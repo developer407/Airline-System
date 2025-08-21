@@ -314,7 +314,7 @@ const SearchResults = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/20 to-gray-50 bg-pattern-dots">
+    <div className="min-h-screen bg-background">
       {/* Enhanced Search Bar Section */}
       {/* <div className="bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -337,7 +337,7 @@ const SearchResults = () => {
           <Button
             variant="outline"
             onClick={() => setShowMobileFilters(!showMobileFilters)}
-            className="w-full flex items-center justify-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white transition-colors"
+            className="w-full flex items-center justify-center gap-2 bg-card/80 backdrop-blur-sm hover:bg-card transition-colors"
           >
             <SlidersHorizontal className="h-4 w-4" />
             Filters & Sort

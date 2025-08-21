@@ -69,19 +69,19 @@ const FlightSearchBar = ({ onSearch, className }) => {
 
   return (
     <div className={cn(
-      "bg-white rounded-2xl shadow-2xl border border-white/20 backdrop-blur-sm",
+      "bg-card rounded-2xl shadow-2xl border border-border backdrop-blur-sm",
       className
     )}>
       {/* Trip Type Tabs */}
-      <div className="border-b border-gray-100 p-6 pb-4">
-        <div className="flex space-x-1 bg-gray-100 rounded-lg p-1 w-fit">
+      <div className="border-b border-border p-6 pb-4">
+        <div className="flex space-x-1 bg-muted rounded-lg p-1 w-fit">
           <Button
             onClick={() => setTripType("roundTrip")}
             className={cn(
               "px-4 py-2 rounded-md text-sm font-medium transition-all",
               tripType === "roundTrip"
-                ? "bg-white text-blue-600 shadow-sm"
-                : "text-gray-600 hover:text-gray-900"
+                ? "bg-background text-primary shadow-sm"
+                : "text-muted-foreground hover:text-foreground"
             )}
           >
             Round Trip
@@ -91,8 +91,8 @@ const FlightSearchBar = ({ onSearch, className }) => {
             className={cn(
               "px-4 py-2 rounded-md text-sm font-medium transition-all",
               tripType === "oneWay"
-                ? "bg-white text-blue-600 shadow-sm"
-                : "text-gray-600 hover:text-gray-900"
+                ? "bg-background text-primary shadow-sm"
+                : "text-muted-foreground hover:text-foreground"
             )}
           >
             One Way
@@ -102,8 +102,8 @@ const FlightSearchBar = ({ onSearch, className }) => {
             className={cn(
               "px-4 py-2 rounded-md text-sm font-medium transition-all",
               tripType === "multiCity"
-                ? "bg-white text-blue-600 shadow-sm"
-                : "text-gray-600 hover:text-gray-900"
+                ? "bg-background text-primary shadow-sm"
+                : "text-muted-foreground hover:text-foreground"
             )}
           >
             Multi City
@@ -117,18 +117,18 @@ const FlightSearchBar = ({ onSearch, className }) => {
           {/* From */}
           <div className="lg:col-span-2">
             <div className="relative">
-              <div className="absolute left-3 top-3 text-gray-400">
+              <div className="absolute left-3 top-3 text-muted-foreground">
                 <Plane className="h-4 w-4" />
               </div>
               <div className="pl-10">
-                <label className="text-xs text-gray-500 font-medium">FROM</label>
+                <label className="text-xs text-muted-foreground font-medium">FROM</label>
                 <Input
                   placeholder="Enter city or airport"
                   value={searchData.from}
                   onChange={(e) => setSearchData(prev => ({ ...prev, from: e.target.value.toUpperCase() }))}
-                  className="border-0 p-0 text-lg font-semibold placeholder:text-gray-400 focus-visible:ring-0 bg-transparent"
+                  className="border-0 p-0 text-lg font-semibold placeholder:text-muted-foreground focus-visible:ring-0 bg-transparent"
                 />
-                <div className="text-sm text-gray-500 mt-1">
+                <div className="text-sm text-muted-foreground mt-1">
                   {searchData.from ? `${searchData.from}` : "City or Airport"}
                 </div>
               </div>
@@ -141,7 +141,7 @@ const FlightSearchBar = ({ onSearch, className }) => {
               variant="ghost"
               size="sm"
               onClick={handleSwapAirports}
-              className="h-10 w-10 rounded-full border border-gray-200 hover:bg-blue-50 hover:border-blue-300 p-0"
+              className="h-10 w-10 rounded-full border border-border hover:bg-primary/10 hover:border-primary p-0"
             >
               <ArrowLeftRight className="h-4 w-4" />
             </Button>
@@ -150,18 +150,18 @@ const FlightSearchBar = ({ onSearch, className }) => {
           {/* To */}
           <div className="lg:col-span-2">
             <div className="relative">
-              <div className="absolute left-3 top-3 text-gray-400">
+              <div className="absolute left-3 top-3 text-muted-foreground">
                 <Plane className="h-4 w-4 rotate-90" />
               </div>
               <div className="pl-10">
-                <label className="text-xs text-gray-500 font-medium">TO</label>
+                <label className="text-xs text-muted-foreground font-medium">TO</label>
                 <Input
                   placeholder="Enter city or airport"
                   value={searchData.to}
                   onChange={(e) => setSearchData(prev => ({ ...prev, to: e.target.value.toUpperCase() }))}
-                  className="border-0 p-0 text-lg font-semibold placeholder:text-gray-400 focus-visible:ring-0 bg-transparent"
+                  className="border-0 p-0 text-lg font-semibold placeholder:text-muted-foreground focus-visible:ring-0 bg-transparent"
                 />
-                <div className="text-sm text-gray-500 mt-1">
+                <div className="text-sm text-muted-foreground mt-1">
                   {searchData.to ? `${searchData.to}` : "City or Airport"}
                 </div>
               </div>
@@ -169,7 +169,7 @@ const FlightSearchBar = ({ onSearch, className }) => {
           </div>
         </div>
 
-        <div className="h-px bg-gray-200 my-4"></div>
+        <div className="h-px bg-border my-4"></div>
 
         {/* Date and Passenger Section */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-6">
@@ -178,16 +178,16 @@ const FlightSearchBar = ({ onSearch, className }) => {
             <Dialog open={departureDateOpen} onOpenChange={setDepartureDateOpen}>
               <DialogTrigger asChild>
                 <div className="cursor-pointer">
-                  <label className="text-xs text-gray-500 font-medium">DEPARTURE</label>
+                  <label className="text-xs text-muted-foreground font-medium">DEPARTURE</label>
                   <div className="flex items-center gap-2 mt-1">
-                    <div className="text-2xl font-bold text-gray-900">
+                    <div className="text-2xl font-bold text-foreground">
                       {formatDate(searchData.departureDate).day}
                     </div>
                     <div className="text-left">
-                      <div className="text-sm font-medium text-gray-900">
+                      <div className="text-sm font-medium text-foreground">
                         {formatDate(searchData.departureDate).month}
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-muted-foreground">
                         {searchData.departureDate ? formatDateFull(searchData.departureDate) : "Select Date"}
                       </div>
                     </div>
@@ -220,16 +220,16 @@ const FlightSearchBar = ({ onSearch, className }) => {
               <Dialog open={returnDateOpen} onOpenChange={setReturnDateOpen}>
                 <DialogTrigger asChild>
                   <div className="cursor-pointer">
-                    <label className="text-xs text-gray-500 font-medium">RETURN</label>
+                    <label className="text-xs text-muted-foreground font-medium">RETURN</label>
                     <div className="flex items-center gap-2 mt-1">
-                      <div className="text-2xl font-bold text-gray-900">
+                      <div className="text-2xl font-bold text-foreground">
                         {formatDate(searchData.returnDate).day}
                       </div>
                       <div className="text-left">
-                        <div className="text-sm font-medium text-gray-900">
+                        <div className="text-sm font-medium text-foreground">
                           {formatDate(searchData.returnDate).month}
                         </div>
-                        <div className="text-xs text-gray-500">
+                        <div className="text-xs text-muted-foreground">
                           {searchData.returnDate ? formatDateFull(searchData.returnDate) : "Select Date"}
                         </div>
                       </div>
@@ -263,14 +263,14 @@ const FlightSearchBar = ({ onSearch, className }) => {
             <Dialog open={passengersOpen} onOpenChange={setPassengersOpen}>
               <DialogTrigger asChild>
                 <div className="cursor-pointer">
-                  <label className="text-xs text-gray-500 font-medium">TRAVELERS</label>
+                  <label className="text-xs text-muted-foreground font-medium">TRAVELERS</label>
                   <div className="flex items-center gap-2 mt-1">
-                    <Users className="h-5 w-5 text-gray-400" />
+                    <Users className="h-5 w-5 text-muted-foreground" />
                     <div>
-                      <div className="text-lg font-semibold text-gray-900">
+                      <div className="text-lg font-semibold text-foreground">
                         {searchData.passengers}
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-muted-foreground">
                         {searchData.passengers === 1 ? "Passenger" : "Passengers"}
                       </div>
                     </div>
@@ -319,17 +319,17 @@ const FlightSearchBar = ({ onSearch, className }) => {
 
           {/* Cabin Class */}
           <div>
-            <label className="text-xs text-gray-500 font-medium">CLASS</label>
+            <label className="text-xs text-muted-foreground font-medium">CLASS</label>
             <Select 
               value={searchData.cabinClass} 
               onValueChange={(value) => setSearchData(prev => ({ ...prev, cabinClass: value }))}
             >
               <SelectTrigger className="border-0 p-0 h-auto focus:ring-0 bg-transparent">
                 <div className="text-left">
-                  <div className="text-lg font-semibold text-gray-900 capitalize">
+                  <div className="text-lg font-semibold text-foreground capitalize">
                     <SelectValue />
                   </div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-muted-foreground">
                     Travel Class
                   </div>
                 </div>
@@ -348,7 +348,7 @@ const FlightSearchBar = ({ onSearch, className }) => {
         {/* Search Button */}
         <Button 
           onClick={handleSearch}
-          className="w-full h-14 text-lg font-semibold bg-blue-600 hover:bg-blue-700 rounded-xl"
+          className="w-full h-14 text-lg font-semibold bg-primary hover:bg-primary/90 rounded-xl"
           disabled={!searchData.from || !searchData.to || !searchData.departureDate}
         >
           <Search className="mr-2 h-5 w-5" />

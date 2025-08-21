@@ -388,15 +388,15 @@ const BookingManagement = ({ flights }) => {
 
 const BookingCard = ({ booking, getStatusBadge, getPaymentStatusBadge, onView, onModify, onCancel }) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+    <div className="bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-4">
-          <div className="bg-blue-100 p-3 rounded-lg">
-            <User className="h-6 w-6 text-blue-600" />
+          <div className="bg-muted p-3 rounded-lg">
+            <User className="h-6 w-6 text-primary" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">{booking.passenger.name}</h3>
-            <p className="text-sm text-gray-600">PNR: {booking.pnr} • {booking.passenger.count} passenger{booking.passenger.count > 1 ? 's' : ''}</p>
+            <h3 className="text-lg font-semibold text-foreground">{booking.passenger.name}</h3>
+            <p className="text-sm text-muted-foreground">PNR: {booking.pnr} • {booking.passenger.count} passenger{booking.passenger.count > 1 ? 's' : ''}</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -409,24 +409,24 @@ const BookingCard = ({ booking, getStatusBadge, getPaymentStatusBadge, onView, o
         {/* Flight Info */}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <Plane className="h-4 w-4 text-gray-400" />
-            <span className="text-sm font-medium text-gray-700">Flight</span>
+            <Plane className="h-4 w-4 text-muted-foreground" />
+            <span className="text-sm font-medium text-foreground">Flight</span>
           </div>
           <div className="text-sm">
             <div className="font-medium">{booking.flightNumber}</div>
-            <div className="text-gray-600">{booking.route}</div>
+            <div className="text-muted-foreground">{booking.route}</div>
           </div>
         </div>
 
         {/* Schedule */}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <Calendar className="h-4 w-4 text-gray-400" />
-            <span className="text-sm font-medium text-gray-700">Schedule</span>
+            <Calendar className="h-4 w-4 text-muted-foreground" />
+            <span className="text-sm font-medium text-foreground">Schedule</span>
           </div>
           <div className="text-sm">
             <div className="font-medium">{new Date(booking.date).toLocaleDateString()}</div>
-            <div className="text-gray-600">{booking.time}</div>
+            <div className="text-muted-foreground">{booking.time}</div>
           </div>
         </div>
 

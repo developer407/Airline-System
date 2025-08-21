@@ -83,8 +83,8 @@ const SortingBar = ({
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4">
         {/* Results Count */}
         <div className="flex items-center gap-2">
-          <TrendingUp className="h-4 w-4 text-blue-600" />
-          <span className="text-sm font-medium text-gray-900">
+          <TrendingUp className="h-4 w-4 text-primary" />
+          <span className="text-sm font-medium text-foreground">
             {resultsCount} flight{resultsCount !== 1 ? 's' : ''} found
           </span>
         </div>
@@ -108,7 +108,7 @@ const SortingBar = ({
                   className={cn(
                     "flex items-center gap-1 text-xs font-medium transition-all duration-200",
                     isActive && "bg-blue-600 text-white hover:bg-blue-700",
-                    !isActive && "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                    !isActive && "text-muted-foreground hover:text-foreground hover:bg-muted"
                   )}
                 >
                   <Icon className="h-3 w-3" />
@@ -181,7 +181,7 @@ const SortingBar = ({
 
       {/* Active Filters Summary */}
       <div className="px-4 pb-2">
-        <div className="flex items-center gap-2 text-xs text-gray-500">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <ArrowUpDown className="h-3 w-3" />
           <span>
             Sorted by {getSortLabel(sortOptions.find(opt => opt.value === sortBy))}

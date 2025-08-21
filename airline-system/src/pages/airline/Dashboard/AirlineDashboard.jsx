@@ -258,7 +258,7 @@ const AirlineDashboard = () => {
   const getStatusBadge = (status) => {
     const statusConfig = {
       "Active": { color: "bg-green-100 text-green-800", icon: "✓" },
-      "Inactive": { color: "bg-gray-100 text-gray-800", icon: "○" },
+      "Inactive": { color: "bg-muted text-muted-foreground", icon: "○" },
       "On-time": { color: "bg-green-100 text-green-800", icon: "✓" },
       "Delayed": { color: "bg-yellow-100 text-yellow-800", icon: "!" },
       "Cancelled": { color: "bg-red-100 text-red-800", icon: "✗" },
@@ -519,7 +519,7 @@ const AirlineDashboard = () => {
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                     <div className="relative">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       <Input
                         placeholder="Search flights..."
                         value={searchQuery}
@@ -615,15 +615,15 @@ const AirlineDashboard = () => {
 
 const FlightCard = ({ flight, getStatusBadge, onEdit, onDelete }) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+    <div className="bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-4">
-          <div className="bg-blue-100 p-3 rounded-lg">
-            <Plane className="h-6 w-6 text-blue-600" />
+          <div className="bg-muted p-3 rounded-lg">
+            <Plane className="h-6 w-6 text-primary" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">{flight.flightNumber}</h3>
-            <p className="text-sm text-gray-600">{flight.aircraft.type} • {flight.aircraft.capacity} seats</p>
+            <h3 className="text-lg font-semibold text-foreground">{flight.flightNumber}</h3>
+            <p className="text-sm text-muted-foreground">{flight.aircraft.type} • {flight.aircraft.capacity} seats</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -636,36 +636,36 @@ const FlightCard = ({ flight, getStatusBadge, onEdit, onDelete }) => {
         {/* Route */}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <MapPin className="h-4 w-4 text-gray-400" />
-            <span className="text-sm font-medium text-gray-700">Route</span>
+            <MapPin className="h-4 w-4 text-muted-foreground" />
+            <span className="text-sm font-medium text-foreground">Route</span>
           </div>
           <div className="text-sm">
             <div className="font-medium">{flight.route.departure.airport} → {flight.route.arrival.airport}</div>
-            <div className="text-gray-600">{flight.route.departure.city} to {flight.route.arrival.city}</div>
+            <div className="text-muted-foreground">{flight.route.departure.city} to {flight.route.arrival.city}</div>
           </div>
         </div>
 
         {/* Schedule */}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <Clock className="h-4 w-4 text-gray-400" />
-            <span className="text-sm font-medium text-gray-700">Schedule</span>
+            <Clock className="h-4 w-4 text-muted-foreground" />
+            <span className="text-sm font-medium text-foreground">Schedule</span>
           </div>
           <div className="text-sm">
             <div className="font-medium">{flight.schedule.departureTime} - {flight.schedule.arrivalTime}</div>
-            <div className="text-gray-600">{flight.schedule.duration} • {flight.schedule.frequency}</div>
+            <div className="text-muted-foreground">{flight.schedule.duration} • {flight.schedule.frequency}</div>
           </div>
         </div>
 
         {/* Pricing */}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <TrendingUp className="h-4 w-4 text-gray-400" />
-            <span className="text-sm font-medium text-gray-700">Pricing</span>
+            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            <span className="text-sm font-medium text-foreground">Pricing</span>
           </div>
           <div className="text-sm">
             <div className="font-medium">₹{flight.pricing.economy.toLocaleString()}</div>
-            <div className="text-gray-600">Economy base fare</div>
+            <div className="text-muted-foreground">Economy base fare</div>
           </div>
         </div>
 

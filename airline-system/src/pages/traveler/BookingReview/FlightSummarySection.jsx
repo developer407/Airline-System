@@ -140,34 +140,34 @@ const FlightSummarySection = ({ flight, searchData, isActive, onToggle }) => {
   }
 
   const FlightLeg = ({ leg, isExpanded, onToggle }) => (
-    <div className="border border-gray-200 rounded-lg overflow-hidden">
+    <div className="border border-border rounded-lg overflow-hidden">
       {/* Leg Header - Always Visible */}
       <div 
-        className="p-4 bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors"
+        className="p-4 bg-muted/50 cursor-pointer hover:bg-muted transition-colors"
         onClick={onToggle}
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="text-xl">{getAirlineLogo(leg.airlineCode)}</div>
             <div>
-              <h4 className="font-semibold text-gray-900">{leg.airline}</h4>
-              <p className="text-sm text-gray-600">{leg.flightNumber} • {leg.aircraft}</p>
+              <h4 className="font-semibold text-foreground">{leg.airline}</h4>
+              <p className="text-sm text-muted-foreground">{leg.flightNumber} • {leg.aircraft}</p>
             </div>
           </div>
           
           <div className="flex items-center gap-4">
             <div className="text-right">
-              <p className="font-medium text-gray-900">
+              <p className="font-medium text-foreground">
                 {formatTime(leg.departure.time)} - {formatTime(leg.arrival.time)}
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 {formatDuration(leg.duration)} • {leg.stops > 0 ? `${leg.stops} stop` : 'Non-stop'}
               </p>
             </div>
             {isExpanded ? (
-              <ChevronUp className="h-5 w-5 text-gray-400" />
+              <ChevronUp className="h-5 w-5 text-muted-foreground" />
             ) : (
-              <ChevronDown className="h-5 w-5 text-gray-400" />
+              <ChevronDown className="h-5 w-5 text-muted-foreground" />
             )}
           </div>
         </div>
@@ -180,37 +180,37 @@ const FlightSummarySection = ({ flight, searchData, isActive, onToggle }) => {
           <div className="grid grid-cols-2 gap-6">
             {/* Departure */}
             <div>
-              <h5 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
-                <Plane className="h-4 w-4 text-blue-600" />
+              <h5 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                <Plane className="h-4 w-4 text-primary" />
                 Departure
               </h5>
               <div className="space-y-1">
-                <p className="text-lg font-semibold text-gray-900">
+                <p className="text-lg font-semibold text-foreground">
                   {formatTime(leg.departure.time)}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-muted-foreground">
                   {leg.departure.airport} - {leg.departure.city}
                 </p>
-                <p className="text-xs text-gray-500">Terminal {leg.departure.terminal}</p>
-                <p className="text-xs text-gray-500">{formatDate(leg.departure.time)}</p>
+                <p className="text-xs text-muted-foreground">Terminal {leg.departure.terminal}</p>
+                <p className="text-xs text-muted-foreground">{formatDate(leg.departure.time)}</p>
               </div>
             </div>
 
             {/* Arrival */}
             <div>
-              <h5 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
+              <h5 className="font-medium text-foreground mb-2 flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-green-600" />
                 Arrival
               </h5>
               <div className="space-y-1">
-                <p className="text-lg font-semibold text-gray-900">
+                <p className="text-lg font-semibold text-foreground">
                   {formatTime(leg.arrival.time)}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-muted-foreground">
                   {leg.arrival.airport} - {leg.arrival.city}
                 </p>
-                <p className="text-xs text-gray-500">Terminal {leg.arrival.terminal}</p>
-                <p className="text-xs text-gray-500">{formatDate(leg.arrival.time)}</p>
+                <p className="text-xs text-muted-foreground">Terminal {leg.arrival.terminal}</p>
+                <p className="text-xs text-muted-foreground">{formatDate(leg.arrival.time)}</p>
               </div>
             </div>
           </div>
@@ -218,37 +218,37 @@ const FlightSummarySection = ({ flight, searchData, isActive, onToggle }) => {
           {/* Flight Info Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-gray-100">
             <div>
-              <p className="text-xs text-gray-500 mb-1">Duration</p>
-              <p className="font-medium text-gray-900">{formatDuration(leg.duration)}</p>
+              <p className="text-xs text-muted-foreground mb-1">Duration</p>
+              <p className="font-medium text-foreground">{formatDuration(leg.duration)}</p>
             </div>
             <div>
-              <p className="text-xs text-gray-500 mb-1">Stops</p>
-              <p className="font-medium text-gray-900">
+              <p className="text-xs text-muted-foreground mb-1">Stops</p>
+              <p className="font-medium text-foreground">
                 {leg.stops > 0 ? `${leg.stops} stop` : 'Non-stop'}
               </p>
             </div>
             <div>
-              <p className="text-xs text-gray-500 mb-1">Cabin Class</p>
-              <p className="font-medium text-gray-900 capitalize">{leg.cabinClass}</p>
+              <p className="text-xs text-muted-foreground mb-1">Cabin Class</p>
+              <p className="font-medium text-foreground capitalize">{leg.cabinClass}</p>
             </div>
             <div>
-              <p className="text-xs text-gray-500 mb-1">Fare Type</p>
-              <p className="font-medium text-gray-900">{leg.fareType}</p>
+              <p className="text-xs text-muted-foreground mb-1">Fare Type</p>
+              <p className="font-medium text-foreground">{leg.fareType}</p>
             </div>
           </div>
 
           {/* Baggage Allowance */}
           <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
             <div className="flex items-center gap-2">
-              <Luggage className="h-4 w-4 text-blue-600" />
+              <Luggage className="h-4 w-4 text-primary" />
               <div>
-                <p className="font-medium text-gray-900">Baggage Allowance</p>
-                <p className="text-sm text-gray-600">
+                <p className="font-medium text-foreground">Baggage Allowance</p>
+                <p className="text-sm text-muted-foreground">
                   Cabin: {leg.baggage.cabin} • Check-in: {leg.baggage.checkin}
                 </p>
               </div>
             </div>
-            <Button variant="outline" size="sm" className="text-blue-600 border-blue-200 hover:bg-blue-100">
+            <Button variant="outline" size="sm" className="text-primary border-blue-200 hover:bg-blue-100">
               Add Baggage
             </Button>
           </div>
@@ -278,18 +278,18 @@ const FlightSummarySection = ({ flight, searchData, isActive, onToggle }) => {
   return (
     <Card className="overflow-hidden">
       <CardHeader 
-        className="cursor-pointer hover:bg-gray-50 transition-colors"
+        className="cursor-pointer hover:bg-muted/50 transition-colors"
         onClick={onToggle}
       >
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Plane className="h-5 w-5 text-blue-600" />
+            <Plane className="h-5 w-5 text-primary" />
             <span>Flight Summary</span>
           </div>
           {isActive ? (
-            <ChevronUp className="h-5 w-5 text-gray-400" />
+            <ChevronUp className="h-5 w-5 text-muted-foreground" />
           ) : (
-            <ChevronDown className="h-5 w-5 text-gray-400" />
+            <ChevronDown className="h-5 w-5 text-muted-foreground" />
           )}
         </CardTitle>
       </CardHeader>
@@ -315,16 +315,16 @@ const FlightSummarySection = ({ flight, searchData, isActive, onToggle }) => {
             {/* Important Info Bar */}
             <div className="flex items-center justify-between p-3 bg-blue-50 border border-blue-200 rounded-lg">
               <div className="flex items-center gap-2">
-                <Info className="h-4 w-4 text-blue-600" />
+                <Info className="h-4 w-4 text-primary" />
                 <span className="text-sm font-medium text-blue-900">
                   Web check-in opens 48 hours before departure
                 </span>
               </div>
               <div className="flex gap-2">
-                <Button variant="outline" size="sm" className="text-blue-600 border-blue-200 hover:bg-blue-100">
+                <Button variant="outline" size="sm" className="text-primary border-blue-200 hover:bg-blue-100">
                   Cancellation Rules
                 </Button>
-                <Button variant="outline" size="sm" className="text-blue-600 border-blue-200 hover:bg-blue-100">
+                <Button variant="outline" size="sm" className="text-primary border-blue-200 hover:bg-blue-100">
                   Fare Rules
                 </Button>
               </div>
@@ -336,10 +336,10 @@ const FlightSummarySection = ({ flight, searchData, isActive, onToggle }) => {
             {flightSegments.map((segment) => (
               <div key={segment.id} className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-foreground">
                     {segment.type}: {segment.route}
                   </h3>
-                  <span className="text-sm text-gray-500">({segment.date})</span>
+                  <span className="text-sm text-muted-foreground">({segment.date})</span>
                 </div>
                 
                 <div className="space-y-3">

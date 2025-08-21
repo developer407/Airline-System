@@ -319,15 +319,15 @@ const BookingHistory = () => {
     .map(code => bookings.find(b => b.airline.code === code)?.airline)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/10 to-gray-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
+      <div className="bg-background border-b border-border sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">My Bookings</h1>
-                <p className="text-gray-600">Manage your flight bookings and travel history</p>
+                <h1 className="text-2xl font-bold text-foreground">My Bookings</h1>
+                <p className="text-muted-foreground">Manage your flight bookings and travel history</p>
               </div>
               <Button className="flex items-center gap-2">
                 <Plane className="h-4 w-4" />
@@ -336,7 +336,7 @@ const BookingHistory = () => {
             </div>
 
             {/* Tabs */}
-            <div className="flex space-x-1 bg-gray-100 rounded-lg p-1 w-fit">
+            <div className="flex space-x-1 bg-muted rounded-lg p-1 w-fit">
               {[
                 { id: "all", label: "All Bookings" },
                 { id: "upcoming", label: "Upcoming" },
@@ -349,8 +349,8 @@ const BookingHistory = () => {
                   className={cn(
                     "px-4 py-2 rounded-md text-sm font-medium transition-all",
                     activeTab === tab.id
-                      ? "bg-white text-blue-600 shadow-sm"
-                      : "text-gray-600 hover:text-gray-900"
+                      ? "bg-background text-primary shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   {tab.label}
@@ -377,7 +377,7 @@ const BookingHistory = () => {
                 <div>
                   <Label htmlFor="search">Search Bookings</Label>
                   <div className="relative mt-1">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
                       id="search"
                       placeholder="PNR, airline, destination..."
@@ -465,9 +465,9 @@ const BookingHistory = () => {
               {filteredBookings.length === 0 ? (
                 <Card>
                   <CardContent className="py-12 text-center">
-                    <Plane className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">No bookings found</h3>
-                    <p className="text-gray-600">Try adjusting your filters or search criteria</p>
+                    <Plane className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                    <h3 className="text-lg font-medium text-foreground mb-2">No bookings found</h3>
+                    <p className="text-muted-foreground">Try adjusting your filters or search criteria</p>
                   </CardContent>
                 </Card>
               ) : (
@@ -573,8 +573,8 @@ const BookingCard = ({ booking, getStatusBadge, getAirlineLogo, navigate }) => {
             <div className="flex items-center gap-3">
               <div className="text-2xl">{getAirlineLogo(booking.airline.code)}</div>
               <div>
-                <h3 className="font-semibold text-gray-900">{booking.airline.name}</h3>
-                <p className="text-sm text-gray-600">{booking.flight.number} • {booking.flight.class}</p>
+                <h3 className="font-semibold text-foreground">{booking.airline.name}</h3>
+                <p className="text-sm text-muted-foreground">{booking.flight.number} • {booking.flight.class}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -589,10 +589,10 @@ const BookingCard = ({ booking, getStatusBadge, getAirlineLogo, navigate }) => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
             {/* Departure */}
             <div className="text-center md:text-left">
-              <div className="text-2xl font-bold text-gray-900">{formatTime(booking.departure.time)}</div>
+              <div className="text-2xl font-bold text-foreground">{formatTime(booking.departure.time)}</div>
               <div className="text-sm font-medium text-gray-700">{booking.departure.airport}</div>
-              <div className="text-xs text-gray-500">{booking.departure.city}</div>
-              <div className="text-xs text-gray-500">Terminal {booking.departure.terminal}</div>
+              <div className="text-xs text-muted-foreground">{booking.departure.city}</div>
+              <div className="text-xs text-muted-foreground">Terminal {booking.departure.terminal}</div>
             </div>
 
             {/* Duration & Route */}
@@ -600,43 +600,43 @@ const BookingCard = ({ booking, getStatusBadge, getAirlineLogo, navigate }) => {
               <div className="flex items-center justify-center gap-2 mb-1">
                 <div className="w-3 h-3 border-2 border-gray-400 rounded-full"></div>
                 <div className="flex-1 h-px bg-gray-300 relative">
-                  <Plane className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Plane className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 </div>
                 <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
               </div>
-              <div className="text-sm text-gray-600">{booking.flight.duration}</div>
-              <div className="text-xs text-gray-500">{formatDate(booking.departure.date)}</div>
+              <div className="text-sm text-muted-foreground">{booking.flight.duration}</div>
+              <div className="text-xs text-muted-foreground">{formatDate(booking.departure.date)}</div>
             </div>
 
             {/* Arrival */}
             <div className="text-center md:text-right">
-              <div className="text-2xl font-bold text-gray-900">{formatTime(booking.arrival.time)}</div>
+              <div className="text-2xl font-bold text-foreground">{formatTime(booking.arrival.time)}</div>
               <div className="text-sm font-medium text-gray-700">{booking.arrival.airport}</div>
-              <div className="text-xs text-gray-500">{booking.arrival.city}</div>
-              <div className="text-xs text-gray-500">Terminal {booking.arrival.terminal}</div>
+              <div className="text-xs text-muted-foreground">{booking.arrival.city}</div>
+              <div className="text-xs text-muted-foreground">Terminal {booking.arrival.terminal}</div>
             </div>
           </div>
 
           {/* Booking Info */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4 border-t border-gray-100">
             <div>
-              <div className="text-xs text-gray-500 uppercase tracking-wide">PNR</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wide">PNR</div>
               <div className="font-medium">{booking.pnr}</div>
             </div>
             <div>
-              <div className="text-xs text-gray-500 uppercase tracking-wide">Passengers</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wide">Passengers</div>
               <div className="font-medium">{booking.passengers[0].name}</div>
               {booking.passengers.length > 1 && (
-                <div className="text-xs text-gray-500">+{booking.passengers.length - 1} more</div>
+                <div className="text-xs text-muted-foreground">+{booking.passengers.length - 1} more</div>
               )}
             </div>
             <div>
-              <div className="text-xs text-gray-500 uppercase tracking-wide">Total Fare</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wide">Total Fare</div>
               <div className="font-medium">₹{booking.payment.total.toLocaleString()}</div>
-              <div className="text-xs text-gray-500">{booking.payment.method}</div>
+              <div className="text-xs text-muted-foreground">{booking.payment.method}</div>
             </div>
             <div>
-              <div className="text-xs text-gray-500 uppercase tracking-wide">Booked On</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wide">Booked On</div>
               <div className="font-medium">{formatDate(booking.bookingDate)}</div>
             </div>
           </div>
@@ -660,18 +660,18 @@ const BookingCard = ({ booking, getStatusBadge, getAirlineLogo, navigate }) => {
             <div className="pt-4 border-t border-gray-100 space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-2">Passenger Details</h4>
+                  <h4 className="font-medium text-foreground mb-2">Passenger Details</h4>
                   <div className="space-y-2">
                     {booking.passengers.map((passenger, index) => (
                       <div key={index} className="flex justify-between text-sm">
                         <span>{passenger.name}</span>
-                        <span className="text-gray-500">{passenger.type}</span>
+                        <span className="text-muted-foreground">{passenger.type}</span>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-2">Payment Details</h4>
+                  <h4 className="font-medium text-foreground mb-2">Payment Details</h4>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span>Payment Method:</span>
@@ -694,8 +694,8 @@ const BookingCard = ({ booking, getStatusBadge, getAirlineLogo, navigate }) => {
                 </div>
               </div>
               
-              <div className="bg-gray-50 rounded-lg p-3">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="bg-muted/50 rounded-lg p-3">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Phone className="h-4 w-4" />
                   <span>Need help with this booking?</span>
                   <Button variant="link" size="sm" className="p-0 h-auto">

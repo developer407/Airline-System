@@ -26,40 +26,40 @@ const SearchSummaryBar = ({ searchData, onModifySearch, className }) => {
   }
 
   return (
-    <div className={cn("sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm", className)}>
+    <div className={cn("sticky top-0 z-40 bg-background border-b border-border shadow-sm", className)}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           {/* Search Summary */}
           <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-8">
             {/* Route */}
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 text-lg font-semibold text-gray-900">
-                <MapPin className="h-5 w-5 text-blue-600" />
+              <div className="flex items-center gap-2 text-lg font-semibold text-foreground">
+                <MapPin className="h-5 w-5 text-primary" />
                 <span>{searchData.from || "Any"}</span>
-                <ArrowRight className="h-4 w-4 text-gray-400" />
+                <ArrowRight className="h-4 w-4 text-muted-foreground" />
                 <span>{searchData.to || "Any"}</span>
               </div>
             </div>
 
             {/* Dates */}
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Calendar className="h-4 w-4 text-blue-600" />
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Calendar className="h-4 w-4 text-primary" />
               <span className="font-medium">{formatDate(searchData.departureDate)}</span>
               {searchData.returnDate && (
                 <>
-                  <span className="text-gray-400">|</span>
+                  <span className="text-muted-foreground">|</span>
                   <span className="font-medium">{formatDate(searchData.returnDate)}</span>
                 </>
               )}
             </div>
 
             {/* Passengers & Class */}
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Users className="h-4 w-4 text-blue-600" />
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Users className="h-4 w-4 text-primary" />
               <span className="font-medium">
                 {searchData.passengers} passenger{searchData.passengers > 1 ? 's' : ''}
               </span>
-              <span className="text-gray-400">|</span>
+              <span className="text-muted-foreground">|</span>
               <span className="font-medium">{formatCabinClass(searchData.cabinClass)}</span>
             </div>
           </div>
@@ -72,7 +72,7 @@ const SearchSummaryBar = ({ searchData, onModifySearch, className }) => {
           <div className="mt-6 p-6 bg-gray-50 rounded-lg border animate-in slide-in-from-top-2 fade-in duration-200">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                <Plane className="h-5 w-5 text-blue-600" />
+                <Plane className="h-5 w-5 text-primary" />
                 Modify Your Search
               </h3>
               <Button
@@ -84,7 +84,7 @@ const SearchSummaryBar = ({ searchData, onModifySearch, className }) => {
                 Cancel
               </Button>
             </div>
-            <p className="text-gray-600 text-sm">
+            <p className="text-muted-foreground text-sm">
               Use the search form above to modify your flight search criteria and find different options.
             </p>
           </div>

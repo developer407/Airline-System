@@ -101,12 +101,12 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
       >
         <div className="flex items-center gap-2">
           <Icon className="h-4 w-4 text-primary" />
-          <span className="font-medium text-gray-900">{title}</span>
+          <span className="font-medium text-foreground">{title}</span>
         </div>
         {expandedSections[id] ? (
-          <ChevronUp className="h-4 w-4 text-gray-400" />
+          <ChevronUp className="h-4 w-4 text-muted-foreground" />
         ) : (
-          <ChevronDown className="h-4 w-4 text-gray-400" />
+          <ChevronDown className="h-4 w-4 text-muted-foreground" />
         )}
       </Button>
       {expandedSections[id] && (
@@ -119,7 +119,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
 
   const PriceSlider = ({ min, max, value, onChange }) => (
     <div className="space-y-3">
-      <div className="flex justify-between text-sm text-gray-600">
+      <div className="flex justify-between text-sm text-muted-foreground">
         <span>${min}</span>
         <span>${max}</span>
       </div>
@@ -167,7 +167,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
           max={max}
         />
       </div>
-      <p className="text-xs text-center text-gray-500">
+      <p className="text-xs text-center text-muted-foreground">
         ${value.min} - ${value.max}
       </p>
     </div>
@@ -211,7 +211,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
                 <RadioGroupItem value={option.value} id={`stops-${option.value}`} />
                 <Label
                   htmlFor={`stops-${option.value}`}
-                  className="text-sm text-gray-700 cursor-pointer hover:text-gray-900 transition-colors"
+                  className="text-sm text-gray-700 cursor-pointer hover:text-foreground transition-colors"
                 >
                   {option.label}
                 </Label>
@@ -236,7 +236,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
             {airlines.map((airline) => (
               <div
                 key={airline.code}
-                className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-50 transition-colors"
+                className="flex items-center gap-3 p-2 rounded-md hover:bg-muted/50 transition-colors"
               >
                 <Checkbox
                   id={`airline-${airline.code}`}
@@ -262,10 +262,10 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
                   <span className="text-lg">
                     {getAirlineLogo(airline.code)}
                   </span>
-                  <span className="text-sm text-gray-700 hover:text-gray-900 transition-colors">
+                  <span className="text-sm text-gray-700 hover:text-foreground transition-colors">
                     {airline.name}
                   </span>
-                  <span className="text-xs text-gray-500 ml-auto">
+                  <span className="text-xs text-muted-foreground ml-auto">
                     {/* You could add flight counts here */}
                   </span>
                 </Label>
@@ -284,12 +284,12 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
             {timeRanges.map((range) => (
               <div
                 key={range.value}
-                className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-50 transition-colors"
+                className="flex items-center gap-3 p-2 rounded-md hover:bg-muted/50 transition-colors"
               >
                 <RadioGroupItem value={range.value} id={`departure-${range.value}`} />
                 <Label
                   htmlFor={`departure-${range.value}`}
-                  className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-gray-900 transition-colors"
+                  className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-foreground transition-colors"
                 >
                   <span className="text-base">{range.icon}</span>
                   <span>{range.label}</span>
@@ -309,12 +309,12 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
             {timeRanges.map((range) => (
               <div
                 key={range.value}
-                className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-50 transition-colors"
+                className="flex items-center gap-3 p-2 rounded-md hover:bg-muted/50 transition-colors"
               >
                 <RadioGroupItem value={range.value} id={`arrival-${range.value}`} />
                 <Label
                   htmlFor={`arrival-${range.value}`}
-                  className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-gray-900 transition-colors"
+                  className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-foreground transition-colors"
                 >
                   <span className="text-base">{range.icon}</span>
                   <span>{range.label}</span>
@@ -327,7 +327,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
         {/* Duration Filter */}
         <FilterSection title="Max Duration" id="duration" icon={Clock}>
           <div className="space-y-3">
-            <div className="flex justify-between text-sm text-gray-600">
+            <div className="flex justify-between text-sm text-muted-foreground">
               <span>0h</span>
               <span>24h</span>
             </div>
@@ -358,7 +358,7 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
                 <Shield className="h-4 w-4 text-green-600" />
                 <Label
                   htmlFor="refundable-filter"
-                  className="text-sm text-gray-700 cursor-pointer hover:text-gray-900 transition-colors"
+                  className="text-sm text-gray-700 cursor-pointer hover:text-foreground transition-colors"
                 >
                   Refundable Only
                 </Label>
@@ -395,10 +395,10 @@ const FiltersSidebar = ({ filters, onFiltersChange, airlines, className }) => {
             {/* Baggage Included Toggle */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Luggage className="h-4 w-4 text-blue-600" />
+                <Luggage className="h-4 w-4 text-primary" />
                 <Label
                   htmlFor="baggage-filter"
-                  className="text-sm text-gray-700 cursor-pointer hover:text-gray-900 transition-colors"
+                  className="text-sm text-gray-700 cursor-pointer hover:text-foreground transition-colors"
                 >
                   Baggage Included
                 </Label>

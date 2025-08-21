@@ -222,9 +222,9 @@ const BookingReview = () => {
   }, [bookingData])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/10 to-gray-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <div className="bg-background border-b border-border sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -236,15 +236,15 @@ const BookingReview = () => {
                 <ChevronLeft className="h-5 w-5" />
               </Button>
               <div>
-                <h1 className="text-xl font-semibold text-gray-900">Review Your Booking</h1>
-                <p className="text-sm text-gray-500">
+                <h1 className="text-xl font-semibold text-foreground">Review Your Booking</h1>
+                <p className="text-sm text-muted-foreground">
                   {searchData.from} → {searchData.to} • {searchData.passengers} passenger{searchData.passengers > 1 ? 's' : ''}
                 </p>
               </div>
             </div>
             
             {/* Progress Indicator */}
-            <div className="hidden md:flex items-center gap-2 text-sm text-gray-600">
+            <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
               <CheckCircle className="h-4 w-4 text-green-600" />
               <span>{sectionProgress.completed}/{sectionProgress.total} sections completed</span>
             </div>
