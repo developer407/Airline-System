@@ -20,6 +20,7 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import FloatingElements from "@/components/FloatingElements"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const LandingPage = () => {
   const navigate = useNavigate()
@@ -101,7 +102,7 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200/50">
+      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
@@ -113,13 +114,14 @@ const LandingPage = () => {
               </span>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors hover:scale-105 transform">Features</a>
-              <a href="#about" className="text-gray-600 hover:text-blue-600 transition-colors hover:scale-105 transform">About</a>
-              <a href="#testimonials" className="text-gray-600 hover:text-blue-600 transition-colors hover:scale-105 transform">Reviews</a>
-              <a href="#pricing" className="text-gray-600 hover:text-blue-600 transition-colors hover:scale-105 transform">Pricing</a>
+              <a href="#features" className="text-muted-foreground hover:text-primary transition-colors hover:scale-105 transform">Features</a>
+              <a href="#about" className="text-muted-foreground hover:text-primary transition-colors hover:scale-105 transform">About</a>
+              <a href="#testimonials" className="text-muted-foreground hover:text-primary transition-colors hover:scale-105 transform">Reviews</a>
+              <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors hover:scale-105 transform">Pricing</a>
             </nav>
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex items-center space-x-4">
+                <ThemeToggle />
                 <Button variant="ghost" onClick={() => navigate('/login')}>
                   Sign In
                 </Button>
@@ -130,7 +132,7 @@ const LandingPage = () => {
               
               {/* Mobile menu button */}
               <button 
-                className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                className="md:hidden p-2 rounded-lg hover:bg-accent transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -140,13 +142,16 @@ const LandingPage = () => {
           
           {/* Mobile Navigation Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden border-t border-gray-200 bg-white/95 backdrop-blur-sm">
+            <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-sm">
               <div className="px-4 py-4 space-y-4">
-                <a href="#features" className="block text-gray-600 hover:text-blue-600 transition-colors py-2">Features</a>
-                <a href="#about" className="block text-gray-600 hover:text-blue-600 transition-colors py-2">About</a>
-                <a href="#testimonials" className="block text-gray-600 hover:text-blue-600 transition-colors py-2">Reviews</a>
-                <a href="#pricing" className="block text-gray-600 hover:text-blue-600 transition-colors py-2">Pricing</a>
-                <div className="pt-4 border-t border-gray-200 space-y-2">
+                <a href="#features" className="block text-muted-foreground hover:text-primary transition-colors py-2">Features</a>
+                <a href="#about" className="block text-muted-foreground hover:text-primary transition-colors py-2">About</a>
+                <a href="#testimonials" className="block text-muted-foreground hover:text-primary transition-colors py-2">Reviews</a>
+                <a href="#pricing" className="block text-muted-foreground hover:text-primary transition-colors py-2">Pricing</a>
+                <div className="pt-4 border-t border-border space-y-2">
+                  <div className="mb-3">
+                    <ThemeToggle className="w-full" />
+                  </div>
                   <Button variant="ghost" className="w-full justify-start" onClick={() => navigate('/login')}>
                     Sign In
                   </Button>

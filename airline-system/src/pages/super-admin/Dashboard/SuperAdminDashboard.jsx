@@ -29,6 +29,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
+import { ThemeToggle } from "@/components/theme-toggle"
 import SuperAdminSidebar from "../Sidebar/SuperAdminSidebar"
 import AirlineManagement from "./AirlineManagement"
 import AirportManagement from "./AirportManagement"
@@ -73,7 +74,7 @@ const SuperAdminDashboard = () => {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-background">
       {/* Sidebar */}
       <SuperAdminSidebar
         activeSection={activeSection}
@@ -88,12 +89,12 @@ const SuperAdminDashboard = () => {
         isSidebarCollapsed ? "ml-16" : "ml-80"
       )}>
         {/* Header */}
-        <div className="bg-white border-b border-gray-200 sticky top-0 z-30">
+        <div className="bg-background border-b border-border sticky top-0 z-30">
           <div className="px-6 py-4">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-                  <Crown className="h-6 w-6 text-purple-600" />
+                <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
+                  <Crown className="h-6 w-6 text-primary" />
                   {activeSection === "overview" ? "Platform Overview" :
                    activeSection.includes("airlines") ? "Airline Management" :
                    activeSection.includes("airports") ? "Airport & City Management" :
@@ -107,7 +108,7 @@ const SuperAdminDashboard = () => {
                    activeSection.includes("security") ? "Security & Compliance" :
                    "Super Admin Dashboard"}
                 </h1>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   {activeSection === "overview" ? "Complete platform oversight and management" :
                    activeSection.includes("airlines") ? "Manage airline registrations, compliance, and operations" :
                    activeSection.includes("airports") ? "Maintain airport data, codes, and infrastructure" :
@@ -123,6 +124,7 @@ const SuperAdminDashboard = () => {
                 </p>
               </div>
               <div className="flex items-center gap-4">
+                <ThemeToggle />
                 <Button variant="outline" className="flex items-center gap-2">
                   <Bell className="h-4 w-4" />
                   System Alerts
