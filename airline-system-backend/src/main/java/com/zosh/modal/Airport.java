@@ -4,6 +4,7 @@ package com.zosh.modal;
 import jakarta.persistence.*;
 import lombok.*;
 
+
 @Entity
 @Table(name = "airports")
 @Data
@@ -11,28 +12,31 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class Airport {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 5)
-    private String code; // e.g., BOM, DEL, JFK
+    @Column(nullable = false, length = 3, unique = true)
+    private String iataCode; // e.g. MUC, JFK
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private String name; // Airport name
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private String detailedName; // MUNICH/DE
+    private String timeZoneOffset;
+
+    @Embedded
+    private Address address;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", nullable = false)
-    private City city; // The city where the airport is located
+    private City city;
 
-    @Column(length = 150)
-    private String address; // Optional airport address/landmark
+    @Embedded
+    private GeoCode geoCode;
 
-    @Column(length = 50)
-    private String terminal; // Terminal info if needed
-
-    @Column(length = 20)
-    private String timezone; // e.g., Asia/Kolkata, UTC+5:30
+    @Embedded
+    private Analytics analytics;
 }
+
+

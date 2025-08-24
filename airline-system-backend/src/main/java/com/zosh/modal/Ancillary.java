@@ -39,4 +39,7 @@ public class Ancillary {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "airline_id", nullable = false)
     private Airline airline;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Booking booking;
 }

@@ -74,10 +74,10 @@ public class Airline {
     @Column(nullable = false)
     private Instant updatedAt;
 
-    @CreatedBy
-    @Column(updatable = false)
+
+    @JoinColumn(updatable = false, nullable = false)
     @OneToOne
-    private User createdBy;
+    private User user;
 
     @LastModifiedBy
     @OneToOne

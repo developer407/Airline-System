@@ -3,6 +3,8 @@ package com.zosh.modal;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,11 +20,11 @@ public class Aircraft {
     private Long id;
 
     // Aircraft unique code (like registration or tail number)
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, name = "aircraft_code")
     private String code;
 
     // Aircraft model (e.g., Boeing 737, Airbus A320)
-    @Column(nullable = false)
+    @Column(nullable = false, name="aircraft_model")
     private String model;
 
     // Manufacturer (e.g., Boeing, Airbus, Embraer)
@@ -40,4 +42,7 @@ public class Aircraft {
     @ManyToOne
     @JoinColumn(name = "airline_id", nullable = false)
     private Airline airline;
+
+//    @OneToMany(mappedBy = "aircraft", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<CabinClass> cabinClasses;
 }
